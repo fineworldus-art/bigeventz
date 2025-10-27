@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .merch-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.3);
         }
         .merch-hero h1 {
             font-size: 48px;
@@ -20,6 +21,7 @@
             max-width: 1400px;
             margin: 60px auto;
             padding: 0 20px;
+            background: #f8f6f0;
         }
         .filter-section {
             display: flex;
@@ -29,18 +31,20 @@
         }
         .filter-btn {
             padding: 10px 25px;
-            border: 2px solid #667eea;
+            border: 2px solid #d4af37;
             background: white;
-            color: #667eea;
+            color: #d4af37;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s;
-            font-weight: 500;
+            font-weight: 600;
+            font-family: 'Georgia', serif;
         }
         .filter-btn:hover,
         .filter-btn.active {
-            background: #667eea;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
             color: white;
+            border-color: #ff6f61;
         }
         .products-grid {
             display: grid;
@@ -49,13 +53,15 @@
         }
         .product-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+            transition: all 0.3s;
+            border: 1px solid #f0e6d2;
         }
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.25);
         }
         .product-image {
             width: 100%;
@@ -66,17 +72,19 @@
             padding: 20px;
         }
         .product-category {
-            color: #667eea;
-            font-size: 12px;
-            font-weight: 600;
+            color: #d4af37;
+            font-size: 11px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
         }
         .product-name {
-            font-size: 20px;
-            font-weight: 600;
+            font-size: 22px;
+            font-weight: 700;
             margin: 10px 0;
-            color: #333;
+            color: #2c2c2c;
+            font-family: 'Georgia', serif;
         }
         .product-description {
             color: #666;
@@ -85,36 +93,42 @@
             margin-bottom: 15px;
         }
         .product-price {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #667eea;
+            color: #d4af37;
             margin-bottom: 15px;
+            font-family: 'Georgia', serif;
         }
         .add-to-cart-btn {
             width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 14px;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
             color: white;
             border: none;
-            border-radius: 5px;
-            font-weight: 600;
+            border-radius: 8px;
+            font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.3);
         }
         .add-to-cart-btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.4);
         }
         .cart-icon {
             position: fixed;
             top: 100px;
             right: 30px;
-            background: #667eea;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
             color: white;
             padding: 15px;
             border-radius: 50%;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.4);
             z-index: 100;
         }
         .cart-count {
