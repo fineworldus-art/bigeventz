@@ -95,6 +95,28 @@
             background: #f8d7da;
             color: #721c24;
         }
+        .create-event-banner {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .create-event-btn {
+            padding: 12px 30px;
+            background: white;
+            color: #f5576c;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .create-event-btn:hover {
+            transform: translateY(-2px);
+        }
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -163,10 +185,19 @@
 
     <main id="main-content">
         <div class="dashboard-container">
-            <div class="dashboard-header">
-                <h1>Welcome back, <span id="userName">User</span>!</h1>
-                <p>Manage your events, tickets, and account settings</p>
+        <div class="dashboard-header">
+            <h1>Welcome back, <span id="userName">User</span>!</h1>
+            <p>Here's your event activity</p>
+        </div>
+
+        <!-- Create Event Banner (for Promoters/Organisers) -->
+        <div class="create-event-banner" id="createEventBanner" style="display: none;">
+            <div>
+                <h2 style="margin: 0 0 10px 0;">Ready to create your event?</h2>
+                <p style="margin: 0; opacity: 0.9;">Share your event with thousands of attendees worldwide</p>
             </div>
+            <a href="create-event.html" class="create-event-btn">+ Create Event</a>
+        </div>
 
             <div class="dashboard-stats">
                 <div class="stat-card">
@@ -312,6 +343,12 @@
         // Display user name
         const userName = localStorage.getItem('userName') || localStorage.getItem('userEmail') || 'User';
         document.getElementById('userName').textContent = userName.split('@')[0];
+        
+        // Show Create Event banner for promoters/organisers
+        const accountType = localStorage.getItem('accountType');
+        if (accountType === 'Promoter' || accountType === 'Organizer') {
+            document.getElementById('createEventBanner').style.display = 'flex';
+        }
 
         // Logout functionality
         document.getElementById('logoutBtn').addEventListener('click', function() {

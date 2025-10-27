@@ -1,238 +1,302 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Big Eventz is a global platform for promoting events and selling tickets. Discover, host and buy tickets for music festivals, conferences, art exhibitions and more." />
-    <meta name="keywords" content="event tickets, global events, event promotion, festival, conference, music, art, concert, promoter platform" />
-    <link rel="canonical" href="https://www.bigeventz.com/" />
-    <title>Big Eventz | Home</title>
-    <!-- Google font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#mainContent" class="skip-link" data-i18n="skipToMain">Skip to main content</a>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Eventz | Event Map</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .map-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .map-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .map-container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .map-wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .locations-list {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        .locations-list h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        .location-item {
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .location-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        .location-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .location-address {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .location-events {
+            font-size: 12px;
+            color: #667eea;
+            font-weight: 600;
+        }
+        .map-display {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 600px;
+            position: relative;
+        }
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea20 0%, #764ba220 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #667eea;
+        }
+        .map-placeholder h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .stat-label {
+            color: #666;
+        }
+        @media (max-width: 968px) {
+            .map-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header>
-      <div class="logo">
-        <!-- Clickable logo redirects to the home page -->
-        <a href="index.html" class="logo-text">Big Eventz</a>
-      </div>
-      <!-- Mobile menu toggle button -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-      <!-- Navigation with additional login/sign‑up links -->
-      <nav aria-label="Primary navigation" id="mainNav">
-        <ul>
-          <li><a href="index.html" data-i18n="home">Home</a></li>
-          <li><a href="events.html" data-i18n="events">Events</a></li>
-          <li><a href="tickets_modern.html" data-i18n="tickets">Tickets</a></li>
-          <li><a href="promoters_modern.html" data-i18n="promoters">Promoters</a></li>
-          <li><a href="merchandise.html" data-i18n="merchandise">Merchandise</a></li>
-          <li><a href="map.html" data-i18n="map">Map</a></li>
-          <li><a href="about.html" data-i18n="about">About</a></li>
-          <li><a href="contact.html" data-i18n="contact">Contact</a></li>
-          <li class="auth-item"><a href="login.html" class="login-link" data-i18n="login">Login</a></li>
-          <li class="auth-item"><a href="signup.html" class="signup-link" data-i18n="signup">Sign Up</a></li>
-          <li class="dashboard-item" style="display:none"><a href="dashboard.html" data-i18n="dashboard">Dashboard</a></li>
-          <li class="logout-item" style="display:none"><a href="#" id="logoutLink" data-i18n="logout">Logout</a></li>
-        </ul>
-      </nav>
-      <!-- Language switcher -->
-      <select class="language-switcher" id="languageSelect" aria-label="Language selector">
-        <option value="en" selected>EN</option>
-        <option value="es">ES</option>
-        <option value="fr">FR</option>
-      </select>
+        <nav>
+            <a href="index.html" class="logo">Big Eventz</a>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-links">
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="events.html" data-translate="events">Events</a></li>
+                <li><a href="tickets_modern.html" data-translate="tickets">Tickets</a></li>
+                <li><a href="promoters_modern.html" data-translate="promoters">Promoters</a></li>
+                <li><a href="merchandise.html" data-translate="merchandise">Merchandise</a></li>
+                <li><a href="map.html" data-translate="map">Map</a></li>
+                <li><a href="about.html" data-translate="about">About</a></li>
+                <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                <li><a href="login.html" data-translate="login">Login</a></li>
+                <li><a href="signup.html" data-translate="signUp">Sign Up</a></li>
+            </ul>
+            <select id="language-selector">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+        </nav>
     </header>
 
-    <!-- Hero section -->
-    <section class="hero" id="mainContent">
-      <div class="content">
-        <h1 data-i18n="heroTitle">Unite the World Through Unforgettable Events</h1>
-        <p data-i18n="heroSubtitle">
-          Big&nbsp;Eventz is your global stage for discovering, promoting and
-          attending concerts, conferences, festivals and more across every
-          continent. We centralise event details, making it simple for
-          attendees and organisers alike.
-        </p>
-        <a href="events.html"><button class="cta-button" id="heroCta" data-i18n="browseEvents">Browse Events</button></a>
-      </div>
-    </section>
+    <main id="main-content">
+        <div class="map-hero">
+            <h1>Event Locations</h1>
+            <p>Discover events happening around the world</p>
+        </div>
 
-    <!-- Countdown to the next big event -->
-    <section class="countdown-section">
-      <h2 data-i18n="nextBigEvent">Next Big Event Starts In:</h2>
-      <!--
-        The data-date attribute stores the ISO date of the next event. The
-        JavaScript in script.js reads this date and updates the timer
-        every second. Providing a real-time countdown builds excitement and
-        anticipation, a tactic used by successful event websites【891310995374003†L401-L403】.
-      -->
-      <p class="countdown-timer" id="countdownTimer" data-date="2026-07-22T00:00:00Z">Loading...</p>
-    </section>
+        <div class="map-container">
+            <div class="map-wrapper">
+                <div class="locations-list">
+                    <h2>Featured Locations</h2>
+                    
+                    <div class="location-item">
+                        <div class="location-name">🇬🇧 London, United Kingdom</div>
+                        <div class="location-address">Various venues across London</div>
+                        <div class="location-events">3 upcoming events</div>
+                    </div>
 
-    <!-- Preview of upcoming events -->
-    <section class="section">
-      <h2 data-i18n="upcomingEvents">Upcoming Events</h2>
-      <div class="card-container">
-        <!-- Event 1 -->
-        <div class="card" data-category="music festival">
-          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80" alt="Summer Music Festival" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="summerMusicFestival">Summer Music Festival</h3>
-            <p class="date">22–24 July 2026</p>
-            <p class="location">Hyde Park, London</p>
-            <p>
-              Celebrate the best of live music with top artists and bands, food
-              stalls, and fun activities. Perfect for families and music
-              enthusiasts.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-        <!-- Event 2 -->
-        <div class="card" data-category="conference">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Tech Innovators Conference" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="techInnovatorsConference">Tech Innovators Conference</h3>
-            <p class="date">15–16 September 2026</p>
-            <p class="location">Manchester Central Convention Complex</p>
-            <p>
-              Join industry leaders and pioneers to explore cutting‑edge
-              technologies, visionary talks, and immersive workshops shaping the
-              future of innovation.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-        <!-- Event 3 -->
-        <div class="card" data-category="art">
-          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80" alt="Art & Culture Expo" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="artCultureExpo">Art &amp; Culture Expo</h3>
-            <p class="date">10–12 October 2026</p>
-            <p class="location">Baltic Centre for Contemporary Art, Gateshead</p>
-            <p>
-              Experience an eclectic mix of visual arts, performances, and
-              cultural exhibitions celebrating creativity and diversity in the
-              North East.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="location-item">
+                        <div class="location-name">🇺🇸 New York, USA</div>
+                        <div class="location-address">Manhattan & Brooklyn</div>
+                        <div class="location-events">2 upcoming events</div>
+                    </div>
 
-    <!-- Why choose us section -->
-    <section class="section dark">
-      <h2 data-i18n="whyChoose">Why choose Big Eventz?</h2>
-      <div class="card-container">
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="seamlessPlanning">Seamless Planning</h3>
-            <p data-i18n="seamlessPlanningDesc">
-              From concept to completion, our team handles all aspects of event
-              planning, ensuring a stress‑free experience for you.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="innovativeExperiences">Innovative Experiences</h3>
-            <p data-i18n="innovativeExperiencesDesc">
-              We leverage the latest technology and trends to craft memorable
-              experiences that resonate with your audience.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="communityFocus">Community Focus</h3>
-            <p data-i18n="communityFocusDesc">
-              Our events bring people together, fostering community connections
-              and lasting memories.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+                    <div class="location-item">
+                        <div class="location-name">🇪🇸 Barcelona, Spain</div>
+                        <div class="location-address">Montjuïc & Gothic Quarter</div>
+                        <div class="location-events">1 upcoming event</div>
+                    </div>
 
-    <!-- Call‑to‑action section encouraging ticket purchases -->
-    <section class="cta-section">
-      <h2 data-i18n="dontMissOut">Don't miss out on the next big event!</h2>
-      <p data-i18n="dontMissOutDesc">Secure your place and create lasting memories with friends, family or colleagues.</p>
-      <a href="tickets_modern.html"><button class="cta-button" data-i18n="getYourTickets">Get Your Tickets</button></a>
-    </section>
+                    <div class="location-item">
+                        <div class="location-name">🇯🇵 Tokyo, Japan</div>
+                        <div class="location-address">Shibuya & Akihabara</div>
+                        <div class="location-events">2 upcoming events</div>
+                    </div>
 
-    <!-- Testimonials section for social proof -->
-    <section class="testimonials" id="testimonials">
-      <h2 data-i18n="whatPeopleSay">What People Are Saying</h2>
-      <div class="testimonial-cards">
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial1">“Big&nbsp;Eventz made planning my international music tour effortless. The platform's reach and simplicity are unmatched.”</p>
-          <p class="author" data-i18n="testimonial1Author">— Samira K., Event Promoter</p>
+                    <div class="location-item">
+                        <div class="location-name">🇦🇺 Sydney, Australia</div>
+                        <div class="location-address">Sydney Opera House area</div>
+                        <div class="location-events">1 upcoming event</div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-name">🇧🇷 Rio de Janeiro, Brazil</div>
+                        <div class="location-address">Copacabana & Ipanema</div>
+                        <div class="location-events">1 upcoming event</div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-name">🇿🇦 Cape Town, South Africa</div>
+                        <div class="location-address">V&A Waterfront</div>
+                        <div class="location-events">1 upcoming event</div>
+                    </div>
+
+                    <div class="location-item">
+                        <div class="location-name">🇩🇪 Berlin, Germany</div>
+                        <div class="location-address">Mitte & Kreuzberg</div>
+                        <div class="location-events">1 upcoming event</div>
+                    </div>
+                </div>
+
+                <div class="map-display">
+                    <div class="map-placeholder">
+                        <h3>🗺️ Interactive Map</h3>
+                        <p>Click on locations to view event details</p>
+                        <p style="margin-top: 20px; font-size: 14px; max-width: 400px; text-align: center;">
+                            In production, this would display an interactive map using Google Maps or Mapbox API, 
+                            showing all event locations with clickable markers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,500+</div>
+                    <div class="stat-label">Cities</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10,000+</div>
+                    <div class="stat-label">Venues</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Events Hosted</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; padding: 40px; background: #f8f9fa; border-radius: 10px;">
+                <h2 style="color: #667eea; margin-bottom: 20px;">Can't Find Your City?</h2>
+                <p style="color: #666; line-height: 1.8; margin-bottom: 20px;">
+                    We're constantly expanding to new locations. If you're an event organiser looking to host an event in a city not yet on our map, 
+                    we'd love to hear from you! Our team is dedicated to bringing Big Eventz to every corner of the globe.
+                </p>
+                <a href="contact.html" style="display: inline-block; padding: 12px 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-decoration: none; border-radius: 5px; font-weight: 600;">
+                    Request New Location
+                </a>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial2">“From finding tickets to receiving updates, the experience was seamless. I’m already looking forward to my next event!”</p>
-          <p class="author" data-i18n="testimonial2Author">— Daniel R., Attendee</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Big Eventz</h3>
+                <p>Your global stage for unforgettable events</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="tickets_modern.html">Tickets</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial3">“The global network of promoters means there’s always something new and exciting to discover anywhere in the world.”</p>
-          <p class="author" data-i18n="testimonial3Author">— Mei L., Festival Enthusiast</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Big Eventz. All Rights Reserved.</p>
+            <a href="#" data-translate="termsAndConditions">Terms & Conditions</a>
         </div>
-      </div>
-    </section>
-
-    <!-- Sponsors and partners section -->
-    <section class="sponsors">
-      <h2 data-i18n="partnersSponsors">Our Partners &amp; Sponsors</h2>
-      <div class="sponsor-logos">
-        <img src="https://logo.clearbit.com/google.com" alt="Google" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4285F4/FFFFFF?text=Google'" />
-        <img src="https://logo.clearbit.com/twitter.com" alt="Twitter" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/1DA1F2/FFFFFF?text=Twitter'" />
-        <img src="https://logo.clearbit.com/instagram.com" alt="Instagram" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/E4405F/FFFFFF?text=Instagram'" />
-        <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/1DB954/FFFFFF?text=Spotify'" />
-        <img src="https://logo.clearbit.com/slack.com" alt="Slack" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4A154B/FFFFFF?text=Slack'" />
-        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/00A4EF/FFFFFF?text=Microsoft'" />
-        <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/635BFF/FFFFFF?text=Stripe'" />
-        <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/003087/FFFFFF?text=PayPal'" />
-      </div>
-    </section>
-
-    <!-- Newsletter subscription section -->
-    <section class="newsletter">
-      <h2 data-i18n="stayUpdated">Stay Updated</h2>
-      <p data-i18n="newsletterDesc">Subscribe to our newsletter and be the first to know about new events and ticket sales.</p>
-      <form id="newsletterForm">
-        <input type="email" id="newsletterEmail" placeholder="Your email address" required />
-        <button type="submit" data-i18n="subscribe">Subscribe</button>
-      </form>
-    </section>
-
-    <footer class="footer">
-      <p>&copy; 2025 Big Eventz. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
-      <p>
-        <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
-        |
-        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-        |
-        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-        |
-        <a href="terms.html" data-i18n="termsAndConditions">Terms &amp; Conditions</a>
-      </p>
     </footer>
 
-    <!-- Load translations first, then site-wide JavaScript -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
-  </body>
+    <script>
+        // Location click functionality
+        document.querySelectorAll('.location-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.location-item').forEach(i => i.style.borderLeftColor = '#667eea');
+                this.style.borderLeftColor = '#764ba2';
+                
+                const locationName = this.querySelector('.location-name').textContent;
+                alert(`Viewing events in ${locationName}\n\nIn production, this would zoom to the location on the map and show event markers.`);
+            });
+        });
+    </script>
+</body>
 </html>
 

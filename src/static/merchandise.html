@@ -1,238 +1,371 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Big Eventz is a global platform for promoting events and selling tickets. Discover, host and buy tickets for music festivals, conferences, art exhibitions and more." />
-    <meta name="keywords" content="event tickets, global events, event promotion, festival, conference, music, art, concert, promoter platform" />
-    <link rel="canonical" href="https://www.bigeventz.com/" />
-    <title>Big Eventz | Home</title>
-    <!-- Google font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Skip to main content link for accessibility -->
-    <a href="#mainContent" class="skip-link" data-i18n="skipToMain">Skip to main content</a>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Eventz | Merchandise</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .merch-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .merch-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .merch-container {
+            max-width: 1400px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #667eea;
+            color: white;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 20px;
+        }
+        .product-category {
+            color: #667eea;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .product-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 10px 0;
+            color: #333;
+        }
+        .product-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .product-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .add-to-cart-btn:hover {
+            transform: translateY(-2px);
+        }
+        .cart-icon {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <header>
-      <div class="logo">
-        <!-- Clickable logo redirects to the home page -->
-        <a href="index.html" class="logo-text">Big Eventz</a>
-      </div>
-      <!-- Mobile menu toggle button -->
-      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
-      <!-- Navigation with additional login/sign‑up links -->
-      <nav aria-label="Primary navigation" id="mainNav">
-        <ul>
-          <li><a href="index.html" data-i18n="home">Home</a></li>
-          <li><a href="events.html" data-i18n="events">Events</a></li>
-          <li><a href="tickets_modern.html" data-i18n="tickets">Tickets</a></li>
-          <li><a href="promoters_modern.html" data-i18n="promoters">Promoters</a></li>
-          <li><a href="merchandise.html" data-i18n="merchandise">Merchandise</a></li>
-          <li><a href="map.html" data-i18n="map">Map</a></li>
-          <li><a href="about.html" data-i18n="about">About</a></li>
-          <li><a href="contact.html" data-i18n="contact">Contact</a></li>
-          <li class="auth-item"><a href="login.html" class="login-link" data-i18n="login">Login</a></li>
-          <li class="auth-item"><a href="signup.html" class="signup-link" data-i18n="signup">Sign Up</a></li>
-          <li class="dashboard-item" style="display:none"><a href="dashboard.html" data-i18n="dashboard">Dashboard</a></li>
-          <li class="logout-item" style="display:none"><a href="#" id="logoutLink" data-i18n="logout">Logout</a></li>
-        </ul>
-      </nav>
-      <!-- Language switcher -->
-      <select class="language-switcher" id="languageSelect" aria-label="Language selector">
-        <option value="en" selected>EN</option>
-        <option value="es">ES</option>
-        <option value="fr">FR</option>
-      </select>
+        <nav>
+            <a href="index.html" class="logo">Big Eventz</a>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="nav-links">
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="events.html" data-translate="events">Events</a></li>
+                <li><a href="tickets_modern.html" data-translate="tickets">Tickets</a></li>
+                <li><a href="promoters_modern.html" data-translate="promoters">Promoters</a></li>
+                <li><a href="merchandise.html" data-translate="merchandise">Merchandise</a></li>
+                <li><a href="map.html" data-translate="map">Map</a></li>
+                <li><a href="about.html" data-translate="about">About</a></li>
+                <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                <li><a href="login.html" data-translate="login">Login</a></li>
+                <li><a href="signup.html" data-translate="signUp">Sign Up</a></li>
+            </ul>
+            <select id="language-selector">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+        </nav>
     </header>
 
-    <!-- Hero section -->
-    <section class="hero" id="mainContent">
-      <div class="content">
-        <h1 data-i18n="heroTitle">Unite the World Through Unforgettable Events</h1>
-        <p data-i18n="heroSubtitle">
-          Big&nbsp;Eventz is your global stage for discovering, promoting and
-          attending concerts, conferences, festivals and more across every
-          continent. We centralise event details, making it simple for
-          attendees and organisers alike.
-        </p>
-        <a href="events.html"><button class="cta-button" id="heroCta" data-i18n="browseEvents">Browse Events</button></a>
-      </div>
-    </section>
+    <div class="cart-icon" onclick="alert('Cart functionality coming soon!')">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
+    </div>
 
-    <!-- Countdown to the next big event -->
-    <section class="countdown-section">
-      <h2 data-i18n="nextBigEvent">Next Big Event Starts In:</h2>
-      <!--
-        The data-date attribute stores the ISO date of the next event. The
-        JavaScript in script.js reads this date and updates the timer
-        every second. Providing a real-time countdown builds excitement and
-        anticipation, a tactic used by successful event websites【891310995374003†L401-L403】.
-      -->
-      <p class="countdown-timer" id="countdownTimer" data-date="2026-07-22T00:00:00Z">Loading...</p>
-    </section>
+    <main id="main-content">
+        <div class="merch-hero">
+            <h1>Official Merchandise</h1>
+            <p>Show your love for Big Eventz with our exclusive collection</p>
+        </div>
 
-    <!-- Preview of upcoming events -->
-    <section class="section">
-      <h2 data-i18n="upcomingEvents">Upcoming Events</h2>
-      <div class="card-container">
-        <!-- Event 1 -->
-        <div class="card" data-category="music festival">
-          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80" alt="Summer Music Festival" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="summerMusicFestival">Summer Music Festival</h3>
-            <p class="date">22–24 July 2026</p>
-            <p class="location">Hyde Park, London</p>
-            <p>
-              Celebrate the best of live music with top artists and bands, food
-              stalls, and fun activities. Perfect for families and music
-              enthusiasts.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-        <!-- Event 2 -->
-        <div class="card" data-category="conference">
-          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Tech Innovators Conference" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="techInnovatorsConference">Tech Innovators Conference</h3>
-            <p class="date">15–16 September 2026</p>
-            <p class="location">Manchester Central Convention Complex</p>
-            <p>
-              Join industry leaders and pioneers to explore cutting‑edge
-              technologies, visionary talks, and immersive workshops shaping the
-              future of innovation.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-        <!-- Event 3 -->
-        <div class="card" data-category="art">
-          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80" alt="Art & Culture Expo" loading="lazy" />
-          <div class="card-content">
-            <h3 data-i18n="artCultureExpo">Art &amp; Culture Expo</h3>
-            <p class="date">10–12 October 2026</p>
-            <p class="location">Baltic Centre for Contemporary Art, Gateshead</p>
-            <p>
-              Experience an eclectic mix of visual arts, performances, and
-              cultural exhibitions celebrating creativity and diversity in the
-              North East.
-            </p>
-            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <div class="merch-container">
+            <div class="filter-section">
+                <button class="filter-btn active" data-category="all">All Products</button>
+                <button class="filter-btn" data-category="apparel">Apparel</button>
+                <button class="filter-btn" data-category="accessories">Accessories</button>
+                <button class="filter-btn" data-category="tech">Tech</button>
+                <button class="filter-btn" data-category="collectibles">Collectibles</button>
+            </div>
 
-    <!-- Why choose us section -->
-    <section class="section dark">
-      <h2 data-i18n="whyChoose">Why choose Big Eventz?</h2>
-      <div class="card-container">
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="seamlessPlanning">Seamless Planning</h3>
-            <p data-i18n="seamlessPlanningDesc">
-              From concept to completion, our team handles all aspects of event
-              planning, ensuring a stress‑free experience for you.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="innovativeExperiences">Innovative Experiences</h3>
-            <p data-i18n="innovativeExperiencesDesc">
-              We leverage the latest technology and trends to craft memorable
-              experiences that resonate with your audience.
-            </p>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-content">
-            <h3 data-i18n="communityFocus">Community Focus</h3>
-            <p data-i18n="communityFocusDesc">
-              Our events bring people together, fostering community connections
-              and lasting memories.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+            <div class="products-grid" id="productsGrid">
+                <!-- T-Shirts -->
+                <div class="product-card" data-category="apparel">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Big Eventz T-Shirt" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Apparel</div>
+                        <h3 class="product-name">Big Eventz Classic T-Shirt</h3>
+                        <p class="product-description">Premium cotton t-shirt with our iconic logo. Available in multiple colours and sizes.</p>
+                        <div class="product-price">£24.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
 
-    <!-- Call‑to‑action section encouraging ticket purchases -->
-    <section class="cta-section">
-      <h2 data-i18n="dontMissOut">Don't miss out on the next big event!</h2>
-      <p data-i18n="dontMissOutDesc">Secure your place and create lasting memories with friends, family or colleagues.</p>
-      <a href="tickets_modern.html"><button class="cta-button" data-i18n="getYourTickets">Get Your Tickets</button></a>
-    </section>
+                <!-- Hoodie -->
+                <div class="product-card" data-category="apparel">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80" alt="Big Eventz Hoodie" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Apparel</div>
+                        <h3 class="product-name">Big Eventz Premium Hoodie</h3>
+                        <p class="product-description">Cosy hoodie perfect for outdoor events. Features embroidered logo and kangaroo pocket.</p>
+                        <div class="product-price">£44.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
 
-    <!-- Testimonials section for social proof -->
-    <section class="testimonials" id="testimonials">
-      <h2 data-i18n="whatPeopleSay">What People Are Saying</h2>
-      <div class="testimonial-cards">
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial1">“Big&nbsp;Eventz made planning my international music tour effortless. The platform's reach and simplicity are unmatched.”</p>
-          <p class="author" data-i18n="testimonial1Author">— Samira K., Event Promoter</p>
+                <!-- Cap -->
+                <div class="product-card" data-category="accessories">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&q=80" alt="Big Eventz Cap" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-name">Big Eventz Snapback Cap</h3>
+                        <p class="product-description">Adjustable snapback cap with embroidered logo. One size fits all.</p>
+                        <div class="product-price">£19.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Tote Bag -->
+                <div class="product-card" data-category="accessories">
+                    <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80" alt="Big Eventz Tote Bag" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-name">Big Eventz Tote Bag</h3>
+                        <p class="product-description">Eco-friendly canvas tote bag. Perfect for carrying event essentials.</p>
+                        <div class="product-price">£14.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Water Bottle -->
+                <div class="product-card" data-category="accessories">
+                    <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&q=80" alt="Big Eventz Water Bottle" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-name">Big Eventz Water Bottle</h3>
+                        <p class="product-description">Stainless steel insulated bottle. Keeps drinks cold for 24 hours.</p>
+                        <div class="product-price">£22.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Phone Case -->
+                <div class="product-card" data-category="tech">
+                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&q=80" alt="Big Eventz Phone Case" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Tech</div>
+                        <h3 class="product-name">Big Eventz Phone Case</h3>
+                        <p class="product-description">Protective phone case with Big Eventz design. Available for iPhone and Samsung.</p>
+                        <div class="product-price">£16.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Wireless Charger -->
+                <div class="product-card" data-category="tech">
+                    <img src="https://images.unsplash.com/photo-1591290619762-c588f8fb3c1d?w=500&q=80" alt="Big Eventz Wireless Charger" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Tech</div>
+                        <h3 class="product-name">Big Eventz Wireless Charger</h3>
+                        <p class="product-description">Fast wireless charging pad with LED indicator. Compatible with all Qi devices.</p>
+                        <div class="product-price">£29.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Poster -->
+                <div class="product-card" data-category="collectibles">
+                    <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=500&q=80" alt="Big Eventz Poster" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Collectibles</div>
+                        <h3 class="product-name">Big Eventz Festival Poster</h3>
+                        <p class="product-description">Limited edition poster featuring iconic Big Eventz moments. A4 size, premium print.</p>
+                        <div class="product-price">£12.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Sticker Pack -->
+                <div class="product-card" data-category="collectibles">
+                    <img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=500&q=80" alt="Big Eventz Sticker Pack" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">Collectibles</div>
+                        <h3 class="product-name">Big Eventz Sticker Pack</h3>
+                        <p class="product-description">Set of 10 waterproof vinyl stickers. Perfect for laptops, water bottles, and more.</p>
+                        <div class="product-price">£7.99</div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial2">“From finding tickets to receiving updates, the experience was seamless. I’m already looking forward to my next event!”</p>
-          <p class="author" data-i18n="testimonial2Author">— Daniel R., Attendee</p>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Big Eventz</h3>
+                <p>Your global stage for unforgettable events</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="tickets_modern.html">Tickets</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">Twitter</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                </div>
+            </div>
         </div>
-        <div class="testimonial-card">
-          <p class="quote" data-i18n="testimonial3">“The global network of promoters means there’s always something new and exciting to discover anywhere in the world.”</p>
-          <p class="author" data-i18n="testimonial3Author">— Mei L., Festival Enthusiast</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Big Eventz. All Rights Reserved.</p>
+            <a href="#" data-translate="termsAndConditions">Terms & Conditions</a>
         </div>
-      </div>
-    </section>
-
-    <!-- Sponsors and partners section -->
-    <section class="sponsors">
-      <h2 data-i18n="partnersSponsors">Our Partners &amp; Sponsors</h2>
-      <div class="sponsor-logos">
-        <img src="https://logo.clearbit.com/google.com" alt="Google" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4285F4/FFFFFF?text=Google'" />
-        <img src="https://logo.clearbit.com/twitter.com" alt="Twitter" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/1DA1F2/FFFFFF?text=Twitter'" />
-        <img src="https://logo.clearbit.com/instagram.com" alt="Instagram" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/E4405F/FFFFFF?text=Instagram'" />
-        <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/1DB954/FFFFFF?text=Spotify'" />
-        <img src="https://logo.clearbit.com/slack.com" alt="Slack" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4A154B/FFFFFF?text=Slack'" />
-        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/00A4EF/FFFFFF?text=Microsoft'" />
-        <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/635BFF/FFFFFF?text=Stripe'" />
-        <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/003087/FFFFFF?text=PayPal'" />
-      </div>
-    </section>
-
-    <!-- Newsletter subscription section -->
-    <section class="newsletter">
-      <h2 data-i18n="stayUpdated">Stay Updated</h2>
-      <p data-i18n="newsletterDesc">Subscribe to our newsletter and be the first to know about new events and ticket sales.</p>
-      <form id="newsletterForm">
-        <input type="email" id="newsletterEmail" placeholder="Your email address" required />
-        <button type="submit" data-i18n="subscribe">Subscribe</button>
-      </form>
-    </section>
-
-    <footer class="footer">
-      <p>&copy; 2025 Big Eventz. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
-      <p>
-        <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
-        |
-        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-        |
-        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-        |
-        <a href="terms.html" data-i18n="termsAndConditions">Terms &amp; Conditions</a>
-      </p>
     </footer>
 
-    <!-- Load translations first, then site-wide JavaScript -->
     <script src="translations.js"></script>
     <script src="script.js"></script>
-  </body>
+    <script>
+        let cartCount = 0;
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                const products = document.querySelectorAll('.product-card');
+                
+                products.forEach(product => {
+                    if (category === 'all' || product.dataset.category === category) {
+                        product.style.display = 'block';
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add to cart functionality
+        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                cartCount++;
+                document.getElementById('cartCount').textContent = cartCount;
+                this.textContent = 'Added!';
+                this.style.background = '#2ecc71';
+                
+                setTimeout(() => {
+                    this.textContent = 'Add to Cart';
+                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                }, 1500);
+            });
+        });
+    </script>
+</body>
 </html>
 
