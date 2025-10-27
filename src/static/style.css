@@ -11,16 +11,20 @@
  */
 
 :root {
-  /* Colour palette */
-  --primary-color: #ff6f61; /* coral */
-  --secondary-color: #ffca28; /* golden accent */
-  --gradient-primary: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
-  --dark-bg: #1a1a1a;
-  --light-bg: #fafaf8;
-  --text-color: #2c2c2c;
-  --white: #ffffff;
-  --premium-gold: #d4af37;
-  --premium-bg: #f8f6f0;
+  /* Modern Colour Palette */
+  --primary-color: #FF6B6B; /* refined coral */
+  --secondary-color: #FFC107; /* modern gold */
+  --accent-color: #20C997; /* fresh teal */
+  --gradient-primary: linear-gradient(135deg, #FF6B6B 0%, #FF922B 50%, #FFC107 100%);
+  --gradient-accent: linear-gradient(135deg, #20C997 0%, #0CA678 100%);
+  --dark-bg: #1A1A1A;
+  --light-bg: #FFFFFF;
+  --text-color: #2C2C2C;
+  --white: #FFFFFF;
+  --premium-gold: #F59E0B;
+  --premium-bg: #FAFAFA;
+  --border-light: #E5E7EB;
+  --shadow-color: rgba(255, 107, 107, 0.15);
 }
 
 /* --------------------------------------------------------------------------
@@ -278,20 +282,21 @@ nav .logout-item a:hover {
 
 /* Call‑to‑action button */
 .cta-button {
-  background-color: var(--primary-color);
+  background: var(--gradient-primary);
   color: var(--white);
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   border: none;
-  border-radius: 30px;
+  border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s, colour 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 .cta-button:hover {
-  background-color: var(--secondary-color);
-  color: var(--dark-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
 }
 
 /* Sections */
@@ -322,10 +327,11 @@ nav .logout-item a:hover {
 
 .card {
   background-color: var(--white);
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px var(--shadow-color);
   overflow: hidden;
-  transition: transform 0.3s;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-light);
   /* Ensure text within cards always uses the base text colour, even inside dark sections */
   color: var(--text-color);
   /* Fade up animation when cards appear to add liveliness */
@@ -333,7 +339,8 @@ nav .logout-item a:hover {
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(255, 107, 107, 0.25);
 }
 
 .card img {
@@ -370,18 +377,20 @@ nav .logout-item a:hover {
 .register-btn {
   display: inline-block;
   margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-  colour: var(--white);
-  border-radius: 20px;
+  padding: 0.6rem 1.5rem;
+  background: var(--gradient-primary);
+  color: var(--white);
+  border-radius: 25px;
   text-decoration: none;
   font-size: 0.9rem;
-  transition: background 0.3s, colour 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .register-btn:hover {
-  background-color: var(--secondary-color);
-  colour: var(--dark-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 /* Filter bar styles for events */
@@ -391,21 +400,25 @@ nav .logout-item a:hover {
 }
 
 .filter-btn {
-  background-color: var(--primary-color);
-  colour: var(--white);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  background: var(--white);
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
   margin: 0 0.25rem;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: background 0.3s, colour 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-  background-color: var(--secondary-color);
-  colour: var(--dark-bg);
+  background: var(--gradient-primary);
+  color: var(--white);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--shadow-color);
 }
 
 /* Footer */
@@ -534,8 +547,8 @@ nav .logout-item a:hover {
 }
 
 .cta-section .cta-button:hover {
-  background-color: var(--secondary-color);
-  color: var(--dark-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
 }
 
 /* Fade‑up animation definition */
