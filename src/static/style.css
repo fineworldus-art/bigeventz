@@ -231,8 +231,8 @@ nav .logout-item a:hover {
 
 /* Hero section */
 .hero {
-  /* Updated to a live music event photo for a more engaging feel */
-  background-image: url('assets/hero-live.jpg');
+  /* Updated to use Unsplash image with gradient overlay for better reliability */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&q=80');
   background-size: cover;
   background-position: center;
   height: 70vh;
