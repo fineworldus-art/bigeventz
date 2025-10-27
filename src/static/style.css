@@ -11,23 +11,25 @@
  */
 
 :root {
-  /* Purple Gradient Luxe Theme */
-  --primary-color: #6366F1; /* indigo */
-  --secondary-color: #7C3AED; /* violet */
-  --accent-color: #22D3EE; /* cyan */
-  --accent-warm: #F59E0B; /* amber */
-  --gradient-primary: linear-gradient(135deg, #7C3AED 0%, #6366F1 100%);
-  --gradient-hero: linear-gradient(135deg, #7C3AED 0%, #6366F1 100%);
-  --gradient-accent: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
-  --dark-bg: #0B1020;
-  --card-bg: #1E293B;
-  --light-bg: #F9FAFB;
-  --text-color: #F9FAFB;
-  --text-dark: #1E293B;
+  /* Onyx & Gold Premium VIP Theme */
+  --primary-color: #F59E0B; /* gold/amber */
+  --secondary-color: #EAB308; /* goldenrod */
+  --accent-color: #FBBF24; /* bright gold */
+  --gradient-primary: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
+  --gradient-hero: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(23, 23, 23, 0.9) 100%);
+  --gradient-gold: linear-gradient(135deg, #F59E0B 0%, #EAB308 50%, #FBBF24 100%);
+  --dark-bg: #0A0A0A;
+  --card-bg: #171717;
+  --surface-bg: #1F1F1F;
+  --light-bg: #FAFAFA;
+  --text-color: #FAFAFA;
+  --text-dark: #0A0A0A;
+  --text-muted: #A3A3A3;
   --white: #FFFFFF;
-  --border-light: #334155;
-  --shadow-color: rgba(124, 58, 237, 0.3);
-  --shadow-glow: rgba(99, 102, 241, 0.5);
+  --border-light: #2A2A2A;
+  --border-gold: #F59E0B;
+  --shadow-color: rgba(245, 158, 11, 0.3);
+  --shadow-glow: rgba(234, 179, 8, 0.4);
 }
 
 /* --------------------------------------------------------------------------
@@ -211,13 +213,13 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--accent-color);
-  background: rgba(34, 211, 238, 0.1);
+  color: var(--primary-color);
+  background: rgba(245, 158, 11, 0.1);
 }
 
 /* Auth links styling (Login/Sign Up) */
 nav .auth-item a {
-  background: rgba(99, 102, 241, 0.15);
+  background: rgba(245, 158, 11, 0.1);
   border: 1px solid var(--primary-color);
 }
 
@@ -229,13 +231,13 @@ nav .auth-item a:hover {
 /* Dashboard and logout links */
 nav .dashboard-item a,
 nav .logout-item a {
-  background: rgba(34, 211, 238, 0.15);
-  border: 1px solid var(--accent-color);
+  background: rgba(234, 179, 8, 0.1);
+  border: 1px solid var(--secondary-color);
 }
 
 nav .dashboard-item a:hover,
 nav .logout-item a:hover {
-  background: var(--accent-color);
+  background: var(--gradient-primary);
   color: var(--dark-bg);
 }
 
@@ -403,9 +405,9 @@ nav .logout-item a:hover {
 }
 
 .filter-btn {
-  background: var(--white);
+  background: var(--card-bg);
   color: var(--primary-color);
-  border: 2px solid var(--primary-color);
+  border: 2px solid var(--border-gold);
   padding: 0.6rem 1.5rem;
   border-radius: 25px;
   margin: 0 0.25rem;
