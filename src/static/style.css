@@ -12,8 +12,9 @@
 
 :root {
   /* Colour palette */
-  --primary-color: #ff6f61; /* coral */
-  --secondary-color: #ffca28; /* golden accent */
+  --primary-color: #667eea; /* purple */
+  --secondary-color: #764ba2; /* deep purple accent */
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --dark-bg: #1a1a1a;
   --light-bg: #f5f5f5;
   --text-color: #333333;
@@ -76,8 +77,8 @@
 
 /* Countdown section on the home page */
 .countdown-section {
-  background-color: var(--secondary-color);
-  color: var(--dark-bg);
+  background: var(--gradient-primary);
+  color: var(--white);
   text-align: center;
   padding: 2rem 1rem;
 }
@@ -201,13 +202,13 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--secondary-color);
-  background: rgba(255, 202, 40, 0.1);
+  color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.1);
 }
 
 /* Auth links styling (Login/Sign Up) */
 nav .auth-item a {
-  background: rgba(255, 111, 97, 0.15);
+  background: rgba(102, 126, 234, 0.15);
   border: 1px solid var(--primary-color);
 }
 
@@ -219,14 +220,14 @@ nav .auth-item a:hover {
 /* Dashboard and logout links */
 nav .dashboard-item a,
 nav .logout-item a {
-  background: rgba(255, 202, 40, 0.15);
+  background: rgba(118, 75, 162, 0.15);
   border: 1px solid var(--secondary-color);
 }
 
 nav .dashboard-item a:hover,
 nav .logout-item a:hover {
   background: var(--secondary-color);
-  color: var(--dark-bg);
+  color: var(--white);
 }
 
 /* Hero section */
@@ -288,7 +289,7 @@ nav .logout-item a:hover {
 
 .cta-button:hover {
   background-color: var(--secondary-color);
-  color: var(--dark-bg);
+  color: var(--white);
 }
 
 /* Sections */
@@ -378,7 +379,7 @@ nav .logout-item a:hover {
 
 .register-btn:hover {
   background-color: var(--secondary-color);
-  colour: var(--dark-bg);
+  colour: var(--white);
 }
 
 /* Filter bar styles for events */
@@ -402,7 +403,7 @@ nav .logout-item a:hover {
 .filter-btn:hover,
 .filter-btn.active {
   background-color: var(--secondary-color);
-  colour: var(--dark-bg);
+  colour: var(--white);
 }
 
 /* Footer */
@@ -467,7 +468,7 @@ nav .logout-item a:hover {
 
 .contact-form button:hover {
   background-color: var(--secondary-color);
-  colour: var(--dark-bg);
+  colour: var(--white);
 }
 
 /* Responsive adjustments */
@@ -532,7 +533,7 @@ nav .logout-item a:hover {
 
 .cta-section .cta-button:hover {
   background-color: var(--secondary-color);
-  color: var(--dark-bg);
+  color: var(--white);
 }
 
 /* Fade‑up animation definition */
