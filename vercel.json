@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "name": "bigeventz",
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "src/static/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server.js"
+    },
+    {
+      "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|webp|ico|json|woff|woff2|ttf|eot))",
+      "dest": "src/static/$1"
+    },
+    {
+      "src": "/(.*\\.html)?",
+      "dest": "src/static/$1"
+    },
+    {
+      "src": "/",
+      "dest": "src/static/index.html"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
+

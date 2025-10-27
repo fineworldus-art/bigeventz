@@ -1,0 +1,1685 @@
+/*
+ * Main styles for the Big Eventz website
+ *
+ * The design uses a warm colour palette with coral and gold accents
+ * inspired by modern event websites. The layout is responsive,
+ * utilising Flexbox and CSS Grid to adapt across device sizes.
+ *
+ * For inspiration we referenced modern event website best practices
+ * highlighted in recent articles, which emphasise clear information
+ * presentation and interactive features【113117155480817†L236-L249】.
+ */
+
+:root {
+  /* Colour palette */
+  --primary-color: #ff6f61; /* coral */
+  --secondary-color: #ffca28; /* golden accent */
+  --dark-bg: #1a1a1a;
+  --light-bg: #f5f5f5;
+  --text-color: #333333;
+  --white: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+ * Additional styles for interactive map, countdown timer and share buttons
+ *
+ * Research on effective event websites highlights the importance of providing
+ * venue information with maps【891310995374003†L495-L501】, creating urgency
+ * with countdowns【891310995374003†L401-L403】, and integrating social
+ * media sharing options to expand reach【891310995374003†L566-L571】. These
+ * styles support the corresponding components.
+ */
+
+/* Map container on the map page */
+/*
+ * Responsive map container
+ * The map needs a flexible height to adapt to different devices. Use
+ * viewport units to scale the height while setting a minimum height so
+ * that the map remains usable on small screens. The container is
+ * centered and limited in width to prevent it from stretching too
+ * wide on large displays.
+ */
+.map-container {
+  height: 60vh;
+  min-height: 350px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom popup styling for map markers */
+.custom-popup .leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  padding: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.custom-popup .leaflet-popup-tip {
+  background-color: white;
+}
+
+/* Responsive map adjustments */
+@media (max-width: 768px) {
+  .map-container {
+    height: 50vh;
+    min-height: 300px;
+  }
+}
+
+/* Countdown section on the home page */
+.countdown-section {
+  background-color: var(--secondary-color);
+  color: var(--dark-bg);
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.countdown-section h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.countdown-timer {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+/* Share buttons within event cards */
+.share-buttons {
+  margin-top: 0.5rem;
+}
+
+.share-buttons a {
+  margin-right: 0.5rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.share-buttons a:hover {
+  color: var(--secondary-color);
+}
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  background-color: var(--light-bg);
+  color: var(--text-color);
+}
+
+/* Header and navigation */
+header {
+  background-color: var(--dark-bg);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Text-only logo styling
+ * When using text instead of an image for the logo/brand, apply
+ * distinctive typography and colour to align with the site’s palette.
+ */
+/* Style for the text-based logo. It inherits sizing from the parent
+ * .logo container, which adjusts responsively via media queries. Only
+ * colour and emphasis are specified here to maintain flexibility. */
+.logo-text {
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* Logo image sizing */
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+/* Screen reader only text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  color: var(--secondary-color);
+  background: rgba(255, 202, 40, 0.1);
+}
+
+/* Auth links styling (Login/Sign Up) */
+nav .auth-item a {
+  background: rgba(255, 111, 97, 0.15);
+  border: 1px solid var(--primary-color);
+}
+
+nav .auth-item a:hover {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+/* Dashboard and logout links */
+nav .dashboard-item a,
+nav .logout-item a {
+  background: rgba(255, 202, 40, 0.15);
+  border: 1px solid var(--secondary-color);
+}
+
+nav .dashboard-item a:hover,
+nav .logout-item a:hover {
+  background: var(--secondary-color);
+  color: var(--dark-bg);
+}
+
+/* Hero section */
+.hero {
+  /* Updated to a live music event photo for a more engaging feel */
+  background-image: url('assets/hero-live.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--white);
+  text-align: center;
+}
+
+/* Dark overlay to improve text readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.hero .content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  padding: 0 1rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Call‑to‑action button */
+.cta-button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.cta-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-bg);
+}
+
+/* Sections */
+.section {
+  padding: 3rem 2rem;
+}
+
+.section.dark {
+  background-color: var(--dark-bg);
+  color: var(--white);
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* Card layouts */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+  /* Ensure text within cards always uses the base text colour, even inside dark sections */
+  color: var(--text-color);
+  /* Fade up animation when cards appear to add liveliness */
+  animation: fadeUp 0.8s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.card-content h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  colour: var(--primary-color);
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-content .date {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.card-content .location {
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.register-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  colour: var(--white);
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.register-btn:hover {
+  background-color: var(--secondary-color);
+  colour: var(--dark-bg);
+}
+
+/* Filter bar styles for events */
+.filter-bar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background-color: var(--primary-color);
+  colour: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin: 0 0.25rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: var(--secondary-color);
+  colour: var(--dark-bg);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--dark-bg);
+  colour: var(--white);
+  text-align: center;
+  padding: 1.5rem 2rem;
+}
+
+.footer a {
+  colour: var(--secondary-color);
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+.footer a:hover {
+  text-decoration: none;
+}
+
+/* Contact form */
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+/* Labels inside forms */
+.contact-form label {
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  background-color: var(--primary-color);
+  colour: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: var(--secondary-color);
+  colour: var(--dark-bg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero {
+    height: 60vh;
+    padding: 0 1rem;
+  }
+  header .logo {
+    font-size: 1.3rem;
+  }
+  nav ul {
+    gap: 0.5rem;
+  }
+  .section h2 {
+    font-size: 1.8rem;
+  }
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+ * Additional styling for lively CTA section and animations
+ *
+ * These styles enhance engagement by introducing a dedicated call‑to‑action
+ * section for ticket purchases, and defining a fade‑up animation applied to
+ * various elements such as the hero content and cards. The use of
+ * animation brings subtle motion to the page without overwhelming users.
+ */
+
+/* CTA section encouraging ticket purchases */
+.cta-section {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.cta-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.cta-section p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-section .cta-button {
+  background-color: var(--white);
+  color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.cta-section .cta-button:hover {
+  background-color: var(--secondary-color);
+  color: var(--dark-bg);
+}
+
+/* Fade‑up animation definition */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply animation to hero content */
+.hero .content {
+  animation: fadeUp 1s ease-out;
+}
+
+/*
+ * Additional components introduced in the global upgrade
+ *
+ * These styles cover the language switcher, skip‑navigation link for
+ * accessibility, newsletter subscription form, testimonial cards,
+ * sponsor logos, search bar, and promoter dashboard. Each component
+ * follows the existing colour palette and typography defined at the
+ * top of this file to maintain consistent branding.
+ */
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 1rem;
+  background-color: var(--primary-color);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  z-index: 1000;
+  text-decoration: none;
+  font-weight: 600;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Language switcher */
+.language-switcher {
+  color: var(--white);
+  background: rgba(255, 202, 40, 0.1);
+  border: 1px solid var(--secondary-color);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-switcher:hover {
+  background: var(--secondary-color);
+  color: var(--dark-bg);
+}
+
+/* Search bar in events page */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar input[type="text"] {
+  width: 60%;
+  max-width: 400px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Testimonials section */
+.testimonials {
+  background-color: var(--light-bg);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.testimonials h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.testimonial-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background-color: var(--white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  position: relative;
+  animation: fadeUp 0.8s ease-out;
+}
+
+.testimonial-card .quote {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card .author {
+  font-weight: 600;
+  colour: var(--primary-color);
+}
+
+/* Sponsor logos section */
+.sponsors {
+  background-color: var(--dark-bg);
+  color: var(--white);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.sponsors h2 {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.sponsor-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.sponsor-logos img {
+  width: 120px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.9;
+  transition: opacity 0.3s;
+}
+
+.sponsor-logos img:hover {
+  opacity: 1;
+}
+
+/* Newsletter subscription */
+.newsletter {
+  background-color: var(--secondary-color);
+  color: var(--dark-bg);
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.newsletter h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.newsletter p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.newsletter input[type="email"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--dark-bg);
+  border-radius: 30px;
+  font-size: 1rem;
+  min-width: 250px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.newsletter button {
+  background-color: var(--dark-bg);
+  color: var(--secondary-color);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.newsletter button:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+/* Authentication pages (login & signup) */
+.auth-section {
+  padding: 3rem 2rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.auth-section h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.auth-form input {
+  padding: 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.auth-form button {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, colour 0.3s;
+}
+
+.auth-form button:hover {
+  background-color: var(--secondary-color);
+  colour: var(--dark-bg);
+}
+
+/* Dashboard styles */
+.dashboard {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.dashboard h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.dashboard .add-event-form {
+  margin-bottom: 2rem;
+  background-color: var(--light-bg);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard .event-list {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.dashboard .event-list th,
+.dashboard .event-list td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 0.75rem;
+}
+
+.dashboard .event-list th {
+  background-color: var(--dark-bg);
+  color: var(--white);
+}
+
+.dashboard .event-list tr:nth-child(even) {
+  background-color: var(--light-bg);
+}
+
+.dashboard .event-list tr:hover {
+  background-color: #efefef;
+}
+
+/* Payment options styling for the ticket purchase form
+ * Display radio buttons horizontally with comfortable spacing. This ensures
+ * the PayPal and Google Pay options are easy to identify and select.
+ */
+.payment-options {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.payment-options input {
+  margin-right: 0.25rem;
+}
+.payment-options label {
+  font-weight: 500;
+}
+
+/* Ticket summary section styling (QR code display) */
+.ticket-summary h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.ticket-summary p {
+  margin-bottom: 0.5rem;
+}
+
+/* Credit card details section styling. Hidden by default and revealed
+ * when the user selects the credit card payment option. Align fields
+ * vertically with consistent spacing.
+ */
+.card-details {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Error message styling */
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+
+/* ==========================================================================
+   MOBILE RESPONSIVE DESIGN
+   Enhanced mobile styles for better user experience on small screens
+   ========================================================================== */
+
+/* Mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Header and navigation */
+  header {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+  
+  header .logo {
+    font-size: 1.2rem;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    gap: 0.3rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+  
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .language-switcher {
+    margin-top: 0.5rem;
+    width: 100%;
+  }
+  
+  /* Hero section */
+  .hero {
+    height: 50vh;
+    min-height: 300px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  
+  .hero p {
+    font-size: 0.95rem;
+  }
+  
+  .hero .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Section headings */
+  .section {
+    padding: 2rem 1rem;
+  }
+  
+  .section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Filter bar for events page */
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    min-width: auto;
+    flex: 0 0 auto;
+  }
+  
+  /* Search bar */
+  .search-bar {
+    width: 100%;
+    padding: 0 1rem;
+  }
+  
+  .search-bar input[type="text"] {
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+  
+  /* Card grid */
+  .card-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .card {
+    margin: 0;
+  }
+  
+  .card-content {
+    padding: 1rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .card-content p {
+    font-size: 0.9rem;
+  }
+  
+  .register-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Share buttons */
+  .share-buttons {
+    gap: 0.5rem;
+  }
+  
+  .share-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Forms (tickets and promoters) */
+  .form-section {
+    padding: 2rem 1rem;
+  }
+  
+  .form-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .form-container {
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+  
+  /* Payment method options */
+  .payment-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .payment-option {
+    padding: 0.75rem;
+  }
+  
+  .payment-option label {
+    font-size: 0.9rem;
+  }
+  
+  /* Submit buttons */
+  .submit-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  /* Countdown section */
+  .countdown-section {
+    padding: 2rem 1rem;
+  }
+  
+  .countdown-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  #countdown {
+    font-size: 1.5rem;
+  }
+  
+  /* CTA section */
+  .cta-section {
+    padding: 2rem 1rem;
+  }
+  
+  .cta-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .cta-section p {
+    font-size: 0.95rem;
+  }
+  
+  /* Testimonials */
+  .testimonials-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .testimonial-card {
+    padding: 1rem;
+  }
+  
+  /* Newsletter */
+  .newsletter form {
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+  }
+  
+  .newsletter input[type="email"] {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .newsletter button {
+    width: 100%;
+  }
+  
+  /* Footer */
+  footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  /* Authentication pages */
+  .auth-section {
+    padding: 2rem 1rem;
+  }
+  
+  .auth-section h2 {
+    font-size: 1.5rem;
+  }
+  
+  .auth-form input {
+    font-size: 0.9rem;
+  }
+  
+  /* Dashboard */
+  .dashboard {
+    padding: 2rem 1rem;
+  }
+  
+  .dashboard h2 {
+    font-size: 1.5rem;
+  }
+  
+  /* Map container */
+  .map-container {
+    height: 40vh;
+    min-height: 250px;
+  }
+  
+  /* Merchandise page */
+  .merchandise-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  /* Success/Error messages */
+  .success-message,
+  .error-message {
+    font-size: 0.9rem;
+    padding: 0.75rem;
+  }
+  
+  /* Ticket summary */
+  #ticketSummary {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  #ticketSummary h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablet devices (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Header and navigation */
+  header {
+    padding: 1rem 1.5rem;
+  }
+  
+  nav ul {
+    gap: 0.75rem;
+  }
+  
+  nav ul li a {
+    font-size: 0.95rem;
+  }
+  
+  /* Hero section */
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  /* Filter bar */
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Card grid - 2 columns on tablet */
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  /* Forms */
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  /* Payment options - 2 columns on tablet */
+  .payment-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Testimonials - 2 columns on tablet */
+  .testimonials-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Merchandise - 2 columns on tablet */
+  .merchandise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    height: 80vh;
+  }
+  
+  nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch target sizes */
+  .btn,
+  .register-btn,
+  .submit-btn,
+  .filter-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  nav ul li a {
+    padding: 0.75rem 1rem;
+  }
+  
+  .share-link {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .card:hover {
+    transform: none;
+  }
+  
+  .btn:hover,
+  .register-btn:hover {
+    transform: none;
+  }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize images and graphics for high DPI displays */
+  .hero {
+    background-size: cover;
+  }
+}
+
+/* Print styles */
+@media print {
+  header,
+  nav,
+  .filter-bar,
+  .search-bar,
+  .cta-section,
+  .newsletter,
+  footer {
+    display: none;
+  }
+  
+  .section {
+    page-break-inside: avoid;
+  }
+  
+  .card {
+    page-break-inside: avoid;
+  }
+}
+
+
+
+/* ==========================================================================
+   ENHANCED MOBILE NAVIGATION - HAMBURGER MENU
+   ========================================================================== */
+
+/* Mobile menu toggle button (hamburger icon) - Hidden on desktop */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation when menu is open */
+.mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Enhanced desktop navigation */
+@media (min-width: 769px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+  
+  header .logo {
+    flex: 0 0 auto;
+    margin-right: 1rem;
+  }
+  
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: calc(100% - 300px);
+  }
+  
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    flex: 0 0 auto;
+  }
+  
+  .language-switcher {
+    flex: 0 0 auto;
+    margin-left: 1rem;
+  }
+  
+  /* Hide mobile menu toggle on desktop */
+  .mobile-menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+  /* Show hamburger menu button on mobile */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  /* Header layout for mobile */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    position: relative;
+  }
+  
+  /* Navigation menu - hidden by default on mobile */
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    padding-top: 4rem;
+  }
+  
+  /* Show navigation when menu is open */
+  nav.active {
+    right: 0;
+  }
+  
+  /* Navigation list styling for mobile */
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  nav ul li {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  nav ul li a {
+    display: block;
+    padding: 1rem 1.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  nav ul li a:hover,
+  nav ul li a:focus {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 2rem;
+  }
+  
+  /* Language switcher in mobile menu */
+  .language-switcher {
+    margin: 1.5rem;
+    width: calc(100% - 3rem);
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+  
+  /* Overlay to close menu when clicking outside */
+  .menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .menu-overlay.active {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/* Tablet navigation (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  nav {
+    width: 60%;
+    max-width: 350px;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Enhanced mobile view for specific sections */
+@media (max-width: 480px) {
+  /* Improve header spacing */
+  header {
+    padding: 0.75rem 1rem;
+  }
+  
+  header .logo {
+    font-size: 1.3rem;
+  }
+  
+  /* Optimize hero section for mobile */
+  .hero {
+    padding: 3rem 1rem;
+  }
+  
+  .hero .content {
+    max-width: 100%;
+  }
+  
+  /* Better button sizing for mobile */
+  .cta-button,
+  .btn,
+  .register-btn {
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* Improve filter buttons layout */
+  .filter-bar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.5rem;
+  }
+  
+  .filter-bar::-webkit-scrollbar {
+    height: 4px;
+  }
+  
+  .filter-bar::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.5);
+    border-radius: 4px;
+  }
+  
+  /* Improve card display on mobile */
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .card img {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Better form layout on mobile */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+  }
+  
+  /* Payment options - stack on mobile */
+  .payment-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .payment-option {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+}
+
+/* Desktop-specific enhancements */
+@media (min-width: 1024px) {
+  /* Wider container for large screens */
+  .section,
+  .form-section {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Better card grid on large screens */
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  /* Optimize navigation spacing */
+  nav ul {
+    gap: 1.5rem;
+  }
+  
+  nav ul li a {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Extra large screens (1440px+) */
+@media (min-width: 1440px) {
+  .section,
+  .form-section {
+    max-width: 1400px;
+  }
+  
+  .card-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* View mode indicator (for development/testing) */
+@media (max-width: 480px) {
+  body::before {
+    content: "Mobile View (≤480px)";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(255, 107, 53, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    z-index: 9999;
+    pointer-events: none;
+    display: none; /* Hidden by default, can be enabled for testing */
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  body::before {
+    content: "Tablet View (481-768px)";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    z-index: 9999;
+    pointer-events: none;
+    display: none; /* Hidden by default, can be enabled for testing */
+  }
+}
+
+@media (min-width: 769px) {
+  body::before {
+    content: "Desktop View (≥769px)";
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(46, 204, 113, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    z-index: 9999;
+    pointer-events: none;
+    display: none; /* Hidden by default, can be enabled for testing */
+  }
+}
+
+/* Enable view mode indicator by adding class to body */
+body.show-view-mode::before {
+  display: block !important;
+}
+

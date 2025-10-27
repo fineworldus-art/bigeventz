@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Purchase tickets for Big Eventz happenings worldwide. Choose your event, select the number of tickets and complete your details." />
+    <meta name="keywords" content="buy tickets, event tickets, ticket purchase, event booking, ticket sales" />
+    <link rel="canonical" href="https://www.bigeventz.com/tickets" />
+    <title>Big Eventz | Buy Tickets</title>
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Modern Form Styling */
+      .modern-form-container {
+        max-width: 900px;
+        margin: 2rem auto;
+        padding: 0 1.5rem;
+      }
+
+      .modern-form {
+        background: #ffffff;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        border: 1px solid #e0e0e0;
+      }
+
+      .modern-form h2 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .modern-form h2::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background-color: #ff6f61;
+        border-radius: 2px;
+      }
+
+      .form-section {
+        margin-bottom: 2.5rem;
+        padding: 1.5rem;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        border: 1px solid #eee;
+      }
+
+      .form-section h3 {
+        color: #555;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 0.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.6rem;
+        color: #333;
+        font-weight: 600;
+        font-size: 1.05rem;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="email"],
+      .form-group input[type="number"],
+      .form-group input[type="tel"],
+      .form-group input[type="month"],
+      .form-group textarea,
+      .form-group select {
+        width: 100%;
+        padding: 0.9rem 1.2rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-family: 'Poppins', sans-serif;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #ff6f61;
+        box-shadow: 0 0 0 3px rgba(255, 111, 97, 0.2);
+      }
+
+      .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .payment-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 0.8rem;
+      }
+
+      .payment-options label {
+        display: flex;
+        align-items: center;
+        padding: 0.8rem 1.2rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 500;
+        background-color: #fff;
+      }
+
+      .payment-options label:hover {
+        border-color: #ff6f61;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .payment-options input[type="radio"] {
+        margin-right: 0.7rem;
+        accent-color: #ff6f61;
+        transform: scale(1.1);
+      }
+
+      .payment-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 0.5rem;
+        vertical-align: middle;
+      }
+
+      .card-details {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        border: 1px solid #e0e0e0;
+      }
+
+      .card-details.hidden {
+        display: none;
+      }
+
+      .card-details .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .submit-button {
+        background: linear-gradient(135deg, #ff6f61, #ff9068);
+        color: white;
+        border: none;
+        padding: 1.1rem 2.5rem;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        transition: transform 0.2s, box-shadow 0.2s;
+        margin-top: 2rem;
+        font-weight: 600;
+      }
+
+      .submit-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(255, 111, 97, 0.3);
+      }
+
+      .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .success-message,
+      .error-message {
+        padding: 1rem;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+        text-align: center;
+        font-weight: 500;
+        display: none;
+      }
+
+      .success-message {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+
+      .error-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+
+      .ticket-summary {
+        margin-top: 3rem;
+        padding: 2rem;
+        background-color: #e6f7ff;
+        border-radius: 12px;
+        border: 1px solid #91d5ff;
+        text-align: center;
+        display: none;
+      }
+
+      .ticket-summary h3 {
+        color: #0056b3;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .ticket-summary p {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      .ticket-summary #qrCode {
+        margin: 1.5rem auto;
+        padding: 1rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        display: inline-block; /* To center the QR code div */
+      }
+
+      .ticket-summary #qrCode img {
+        max-width: 200px;
+        height: auto;
+      }
+
+      @media (max-width: 768px) {
+        .modern-form {
+          padding: 1.5rem;
+        }
+        .form-section {
+          padding: 1rem;
+        }
+        .modern-form h2 {
+          font-size: 1.8rem;
+        }
+        .form-section h3 {
+          font-size: 1.2rem;
+        }
+        .payment-options label {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#mainContent" class="skip-link" data-i18n="skipToMain">Skip to main content</a>
+    <header>
+      <div class="logo">
+        <!-- Clickable logo redirects to the home page -->
+        <a href="index.html" class="logo-text">Big Eventz</a>
+      </div>
+      <!-- Mobile menu toggle button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <!-- Navigation with authentication links -->
+      <nav aria-label="Primary navigation" id="mainNav">
+        <ul>
+          <li><a href="index.html" data-i18n="home">Home</a></li>
+          <li><a href="events.html" data-i18n="events">Events</a></li>
+          <li><a href="tickets_modern.html" data-i18n="tickets">Tickets</a></li>
+          <li><a href="promoters_modern.html" data-i18n="promoters">Promoters</a></li>
+          <li><a href="merchandise.html" data-i18n="merchandise">Merchandise</a></li>
+          <li><a href="map.html" data-i18n="map">Map</a></li>
+          <li><a href="about.html" data-i18n="about">About</a></li>
+          <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+          <li class="auth-item"><a href="login.html" class="login-link" data-i18n="login">Login</a></li>
+          <li class="auth-item"><a href="signup.html" class="signup-link" data-i18n="signup">Sign Up</a></li>
+          <li class="dashboard-item" style="display:none"><a href="dashboard.html" data-i18n="dashboard">Dashboard</a></li>
+          <li class="logout-item" style="display:none"><a href="#" id="logoutLink" data-i18n="logout">Logout</a></li>
+        </ul>
+      </nav>
+      <!-- Language switcher -->
+      <select class="language-switcher" id="languageSelect" aria-label="Language selector">
+        <option value="en" selected>EN</option>
+        <option value="es">ES</option>
+        <option value="fr">FR</option>
+      </select>
+    </header>
+
+    <section class="section" id="mainContent">
+      <div class="modern-form-container">
+        <div class="modern-form">
+          <h2 data-i18n="buyTickets">Buy Tickets</h2>
+          <p data-i18n="selectEvent" style="text-align: center; margin-bottom: 2rem; color: #666;">
+            Select the event you’d like to attend and the number of tickets. Fill in
+            your contact details and we will confirm your purchase shortly.
+          </p>
+
+          <div class="success-message" id="successMessage">
+            Ticket purchased successfully! Redirecting...
+          </div>
+          <div class="error-message" id="errorMessage">
+            Error purchasing ticket. Please try again.
+          </div>
+
+          <form id="ticketForm">
+            <div class="form-section">
+              <h3>Event Selection</h3>
+              <div class="form-group">
+                <label for="eventSelect" data-i18n="event">Event</label>
+                <select id="eventSelect" name="event" required>
+                  <option value="" disabled selected data-i18n="selectAnEvent">Select an event</option>
+                  <option value="Summer Music Festival" data-i18n="summerMusicFestival">Summer Music Festival – 22–24 July 2026</option>
+                  <option value="Tech Innovators Conference" data-i18n="techInnovatorsConference">Tech Innovators Conference – 15–16 September 2026</option>
+                  <option value="Art &amp; Culture Expo" data-i18n="artCultureExpo">Art &amp; Culture Expo – 10–12 October 2026</option>
+                  <option value="Startup Bootcamp" data-i18n="startupBootcamp">Startup Bootcamp – 1–3 November 2026</option>
+                  <option value="Global Food Carnival" data-i18n="globalFoodCarnival">Global Food Carnival – 20–22 November 2026</option>
+                  <option value="Digital Art Workshop" data-i18n="digitalArtWorkshop">Digital Art Workshop – 5 December 2026</option>
+                  <option value="Global Tech Summit" data-i18n="globalTechSummit">Global Tech Summit – 2–4 April 2027</option>
+                  <option value="Carnival Rio" data-i18n="carnivalRio">Carnival Rio – 12–20 February 2027</option>
+                  <option value="Tokyo Anime Expo" data-i18n="tokyoAnimeExpo">Tokyo Anime Expo – 28–30 January 2027</option>
+                  <option value="Sydney Food &amp; Wine Festival" data-i18n="sydneyFoodWineFestival">Sydney Food &amp; Wine Festival – 15–17 March 2027</option>
+                  <option value="Cape Town Jazz Fest" data-i18n="capeTownJazzFest">Cape Town Jazz Fest – 10–12 May 2027</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="quantity" data-i18n="numberOfTickets">Number of Tickets</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" required />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Your Details</h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="name" data-i18n="yourName">Your Name</label>
+                  <input type="text" id="name" name="name" placeholder="Your Name" data-i18n="yourName" required />
+                </div>
+                <div class="form-group">
+                  <label for="email" data-i18n="yourEmail">Your Email</label>
+                  <input type="email" id="email" name="email" placeholder="Your Email" data-i18n="yourEmail" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phone" data-i18n="phoneNumber">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" data-i18n="phoneNumber" required />
+              </div>
+              <div class="form-group">
+                <label for="address" data-i18n="homeAddress">Home Address</label>
+                <textarea id="address" name="address" rows="2" placeholder="Your address" data-i18n="yourAddress" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-section">
+              <h3>Payment Information</h3>
+              <div class="form-group">
+                <label data-i18n="paymentMethod">Payment Method (Accepted Worldwide)</label>
+                <div class="payment-options">
+                  <label>
+                    <input type="radio" name="payment" value="Credit Card" checked />
+                    <img src="https://www.svgrepo.com/show/331079/credit-card.svg" alt="Credit Card" class="payment-icon" />
+                    Credit Card
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="PayPal" />
+                    <img src="https://www.svgrepo.com/show/331085/paypal.svg" alt="PayPal" class="payment-icon" />
+                    PayPal
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Google Pay" />
+                    <img src="https://www.svgrepo.com/show/331077/google-pay.svg" alt="Google Pay" class="payment-icon" />
+                    Google Pay
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Apple Pay" />
+                    <img src="https://www.svgrepo.com/show/331074/apple-pay.svg" alt="Apple Pay" class="payment-icon" />
+                    Apple Pay
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Stripe" />
+                    <img src="https://www.svgrepo.com/show/331088/stripe.svg" alt="Stripe" class="payment-icon" />
+                    Stripe
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Bank Transfer" />
+                    <img src="https://www.svgrepo.com/show/331075/bank.svg" alt="Bank Transfer" class="payment-icon" />
+                    Bank Transfer
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Cryptocurrency" />
+                    <img src="https://www.svgrepo.com/show/331076/bitcoin.svg" alt="Cryptocurrency" class="payment-icon" />
+                    Cryptocurrency
+                  </label>
+                  <label>
+                    <input type="radio" name="payment" value="Mobile Money" />
+                    <img src="https://www.svgrepo.com/show/331082/mobile-payment.svg" alt="Mobile Money" class="payment-icon" />
+                    Mobile Money
+                  </label>
+                </div>
+              </div>
+
+              <!-- Credit card details: displayed only when Credit Card is selected -->
+              <div id="cardDetails" class="card-details hidden">
+                <div class="form-group">
+                  <label for="cardName" data-i18n="nameOnCard">Name on Card</label>
+                  <input type="text" id="cardName" name="cardName" placeholder="Name on card" data-i18n="nameOnCard" />
+                </div>
+                <div class="form-group">
+                  <label for="cardNumber" data-i18n="cardNumber">Card Number</label>
+                  <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" pattern="[0-9\s]{13,19}" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="expiry" data-i18n="expiryDate">Expiry Date</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="MM/YY or MM/YYYY" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="cvv" data-i18n="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" pattern="[0-9]{3,4}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="submit-button" data-i18n="purchaseTickets">Purchase Tickets</button>
+          </form>
+
+          <!-- Ticket summary and QR code display (hidden by default). After purchase
+               this section becomes visible. Event attendees can show the QR code
+               at the venue for quick check‑in. The QR code encodes a unique ticket ID. -->
+          <div id="ticketSummary" class="ticket-summary" style="display: none;">
+            <h3 data-i18n="thankYouForPurchase">Thank You for Your Purchase!</h3>
+            <p data-i18n="yourOrderFor">Your order for [Event Name] tickets has been confirmed.</p>
+            <div id="qrCode"></div>
+            <p style="font-size: 0.9rem; color: #555; max-width: 600px; margin: 0 auto;" data-i18n="saveScreenshotCode">Please save or screenshot this code. You will need it at entry. Each QR code is unique and can be scanned once to validate your ticket.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>&copy; 2025 Big Eventz. <span data-i18n="allRightsReserved">All rights reserved.</span></p>
+      <p>
+        <a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a>
+        |
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        |
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        |
+        <a href="terms.html" data-i18n="termsAndConditions">Terms &amp; Conditions</a>
+      </p>
+    </footer>
+
+    <!-- Include QRCode library for generating scannable tickets -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Load translations first -->
+    <script src="translations.js"></script>
+    
+    <!-- Load shared JavaScript for navigation, language and other functionality -->
+    <script src="script.js?v=2"></script>
+
+  </body>
+</html>
+
