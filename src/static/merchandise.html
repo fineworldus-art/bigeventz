@@ -416,7 +416,8 @@
         }
 
         // Initialize shopping cart
-        const cart = new ShoppingCart();
+        // Use the global cart instance from cart.js
+        const cart = window.shoppingCart;
         
         // Add to cart function
         function addToCart(button) {
