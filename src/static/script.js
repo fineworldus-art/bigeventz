@@ -371,3 +371,41 @@ if (document.readyState === 'loading') {
 
 // document.body.classList.add('show-view-mode');
 
+
+
+
+// Countdown Timer
+function initCountdownTimer() {
+  const countdownElement = document.getElementById('countdownTimer');
+  if (!countdownElement) return;
+  
+  const targetDate = new Date(countdownElement.getAttribute('data-date')).getTime();
+  
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+    
+    if (distance < 0) {
+      countdownElement.textContent = "Event has started!";
+      return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+  
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+// Initialize countdown timer when DOM is loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCountdownTimer);
+} else {
+  initCountdownTimer();
+}
+
