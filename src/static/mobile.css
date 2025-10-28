@@ -485,10 +485,7 @@
         right: -6px;
     }
     
-    /* Hide old floating cart icon on merchandise page */
-    .cart-icon {
-        display: none !important;
-    }
+
 }
 
 /* ========================================================================
