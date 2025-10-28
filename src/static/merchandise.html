@@ -117,6 +117,43 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 15px rgba(255, 111, 97, 0.3);
         }
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #ff6f61;
+            background: white;
+            color: #ff6f61;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .quantity-btn:hover {
+            background: #ff6f61;
+            color: white;
+            transform: scale(1.1);
+        }
+        .quantity-input {
+            width: 60px;
+            height: 36px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
         .add-to-cart-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(255, 111, 97, 0.5);
@@ -148,6 +185,22 @@
             justify-content: center;
             font-size: 12px;
             font-weight: bold;
+        }
+        .cart-notification {
+            position: fixed;
+            top: 100px;
+            right: -300px;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.4);
+            z-index: 10000;
+            transition: right 0.3s ease;
+            font-weight: 600;
+        }
+        .cart-notification.show {
+            right: 30px;
         }
     </style>
 </head>
@@ -183,10 +236,10 @@
         </nav>
     </header>
 
-    <div class="cart-icon" onclick="alert('Cart functionality coming soon!')">
+    <a href="cart.html" class="cart-icon" style="text-decoration: none;">
         🛒
-        <span class="cart-count" id="cartCount">0</span>
-    </div>
+        <span class="cart-count">0</span>
+    </a>
 
     <main id="main-content">
         <div class="merch-hero">
@@ -205,110 +258,155 @@
 
             <div class="products-grid" id="productsGrid">
                 <!-- T-Shirts -->
-                <div class="product-card" data-category="apparel">
+                <div class="product-card" data-category="apparel" data-id="tshirt-1" data-name="Big Eventz Classic T-Shirt" data-price="24.99">
                     <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="Big Eventz T-Shirt" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Apparel</div>
                         <h3 class="product-name">Big Eventz Classic T-Shirt</h3>
                         <p class="product-description">Premium cotton t-shirt with our iconic logo. Available in multiple colours and sizes.</p>
                         <div class="product-price">£24.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Hoodie -->
-                <div class="product-card" data-category="apparel">
+                <div class="product-card" data-category="apparel" data-id="hoodie-1" data-name="Big Eventz Premium Hoodie" data-price="44.99">
                     <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500&q=80" alt="Big Eventz Hoodie" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Apparel</div>
                         <h3 class="product-name">Big Eventz Premium Hoodie</h3>
                         <p class="product-description">Cosy hoodie perfect for outdoor events. Features embroidered logo and kangaroo pocket.</p>
                         <div class="product-price">£44.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Cap -->
-                <div class="product-card" data-category="accessories">
+                <div class="product-card" data-category="accessories" data-id="cap-1" data-name="Big Eventz Snapback Cap" data-price="19.99">
                     <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=500&q=80" alt="Big Eventz Cap" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Accessories</div>
                         <h3 class="product-name">Big Eventz Snapback Cap</h3>
                         <p class="product-description">Adjustable snapback cap with embroidered logo. One size fits all.</p>
                         <div class="product-price">£19.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Tote Bag -->
-                <div class="product-card" data-category="accessories">
+                <div class="product-card" data-category="accessories" data-id="tote-1" data-name="Big Eventz Tote Bag" data-price="14.99">
                     <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500&q=80" alt="Big Eventz Tote Bag" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Accessories</div>
                         <h3 class="product-name">Big Eventz Tote Bag</h3>
                         <p class="product-description">Eco-friendly canvas tote bag. Perfect for carrying event essentials.</p>
                         <div class="product-price">£14.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Water Bottle -->
-                <div class="product-card" data-category="accessories">
+                <div class="product-card" data-category="accessories" data-id="bottle-1" data-name="Big Eventz Water Bottle" data-price="22.99">
                     <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=500&q=80" alt="Big Eventz Water Bottle" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Accessories</div>
                         <h3 class="product-name">Big Eventz Water Bottle</h3>
                         <p class="product-description">Stainless steel insulated bottle. Keeps drinks cold for 24 hours.</p>
                         <div class="product-price">£22.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Phone Case -->
-                <div class="product-card" data-category="tech">
+                <div class="product-card" data-category="tech" data-id="case-1" data-name="Big Eventz Phone Case" data-price="16.99">
                     <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=500&q=80" alt="Big Eventz Phone Case" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Tech</div>
                         <h3 class="product-name">Big Eventz Phone Case</h3>
                         <p class="product-description">Protective phone case with Big Eventz design. Available for iPhone and Samsung.</p>
                         <div class="product-price">£16.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Wireless Charger -->
-                <div class="product-card" data-category="tech">
+                <div class="product-card" data-category="tech" data-id="charger-1" data-name="Big Eventz Wireless Charger" data-price="29.99">
                     <img src="https://images.unsplash.com/photo-1591290619762-c588f8fb3c1d?w=500&q=80" alt="Big Eventz Wireless Charger" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Tech</div>
                         <h3 class="product-name">Big Eventz Wireless Charger</h3>
                         <p class="product-description">Fast wireless charging pad with LED indicator. Compatible with all Qi devices.</p>
                         <div class="product-price">£29.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Poster -->
-                <div class="product-card" data-category="collectibles">
+                <div class="product-card" data-category="collectibles" data-id="poster-1" data-name="Big Eventz Festival Poster" data-price="12.99">
                     <img src="https://images.unsplash.com/photo-1513519245088-0e12902e35ca?w=500&q=80" alt="Big Eventz Poster" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Collectibles</div>
                         <h3 class="product-name">Big Eventz Festival Poster</h3>
                         <p class="product-description">Limited edition poster featuring iconic Big Eventz moments. A4 size, premium print.</p>
                         <div class="product-price">£12.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Sticker Pack -->
-                <div class="product-card" data-category="collectibles">
+                <div class="product-card" data-category="collectibles" data-id="stickers-1" data-name="Big Eventz Sticker Pack" data-price="7.99">
                     <img src="https://images.unsplash.com/photo-1611532736579-6b16e2b50449?w=500&q=80" alt="Big Eventz Sticker Pack" class="product-image">
                     <div class="product-info">
                         <div class="product-category">Collectibles</div>
                         <h3 class="product-name">Big Eventz Sticker Pack</h3>
                         <p class="product-description">Set of 10 waterproof vinyl stickers. Perfect for laptops, water bottles, and more.</p>
                         <div class="product-price">£7.99</div>
-                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus-btn" onclick="updateQuantity(this, -1)">−</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="99" readonly>
+                            <button class="quantity-btn plus-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(this)">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -345,10 +443,40 @@
         </div>
     </footer>
 
+    <script src="cart.js"></script>
     <script src="translations.js"></script>
     <script src="script.js"></script>
     <script>
-        let cartCount = 0;
+        // Quantity selector functions
+        function updateQuantity(button, change) {
+            const quantityInput = button.parentElement.querySelector('.quantity-input');
+            let currentValue = parseInt(quantityInput.value);
+            let newValue = currentValue + change;
+            
+            if (newValue >= 1 && newValue <= 99) {
+                quantityInput.value = newValue;
+            }
+        }
+
+        // Add to cart function
+        function addToCart(button) {
+            const productCard = button.closest('.product-card');
+            const quantityInput = productCard.querySelector('.quantity-input');
+            
+            const product = {
+                id: productCard.dataset.id,
+                name: productCard.dataset.name,
+                price: parseFloat(productCard.dataset.price),
+                image: productCard.querySelector('.product-image').src,
+                category: productCard.dataset.category
+            };
+            
+            const quantity = parseInt(quantityInput.value);
+            window.shoppingCart.addItem(product, quantity);
+            
+            // Reset quantity to 1
+            quantityInput.value = 1;
+        }
 
         // Filter functionality
         document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -366,21 +494,6 @@
                         product.style.display = 'none';
                     }
                 });
-            });
-        });
-
-        // Add to cart functionality
-        document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                cartCount++;
-                document.getElementById('cartCount').textContent = cartCount;
-                this.textContent = 'Added!';
-                this.style.background = '#2ecc71';
-                
-                setTimeout(() => {
-                    this.textContent = 'Add to Cart';
-                    this.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                }, 1500);
             });
         });
     </script>
