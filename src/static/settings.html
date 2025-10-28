@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Eventz | Account Settings</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .settings-hero {
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .settings-hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        .settings-container {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .settings-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        .tab-btn {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+        .tab-btn.active {
+            color: #ff6f61;
+            border-bottom-color: #ff6f61;
+        }
+        .tab-btn:hover {
+            color: #ff6f61;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .settings-card {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .settings-card h2 {
+            color: #ff6f61;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ff6f61;
+        }
+        .form-group .help-text {
+            font-size: 13px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .save-btn {
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.4);
+        }
+        .danger-zone {
+            border: 2px solid #ff4757;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+        }
+        .danger-zone h3 {
+            color: #ff4757;
+            margin-bottom: 15px;
+        }
+        .danger-btn {
+            background: #ff4757;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .danger-btn:hover {
+            background: #e84343;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .notification-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .settings-tabs {
+                flex-direction: column;
+            }
+            .tab-btn {
+                text-align: left;
+            }
+            .settings-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html" class="logo-text">Big Eventz</a>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+        <nav id="mainNav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="tickets_modern.html">Tickets</a></li>
+                <li><a href="promoters_modern.html">Promoters</a></li>
+                <li class="create-event-item"><a href="create-event.html">Create Event</a></li>
+                <li><a href="merchandise.html">Merchandise</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="auth-item"><a href="login.html">Login</a></li>
+                <li class="auth-item"><a href="signup.html">Sign Up</a></li>
+                <li class="dashboard-item" style="display:none"><a href="dashboard.html">Dashboard</a></li>
+                <li class="logout-item" style="display:none"><a href="#" id="logoutLink">Logout</a></li>
+            </ul>
+        </nav>
+        <select class="language-switcher" id="languageSelect">
+            <option value="en" selected>EN</option>
+            <option value="es">ES</option>
+            <option value="fr">FR</option>
+        </select>
+    </header>
+
+    <div class="settings-hero">
+        <h1>⚙️ Account Settings</h1>
+        <p>Manage your profile, preferences, and security</p>
+    </div>
+
+    <div class="settings-container">
+        <div class="settings-tabs">
+            <button class="tab-btn active" data-tab="profile">Profile</button>
+            <button class="tab-btn" data-tab="security">Security</button>
+            <button class="tab-btn" data-tab="notifications">Notifications</button>
+            <button class="tab-btn" data-tab="preferences">Preferences</button>
+        </div>
+
+        <!-- Profile Tab -->
+        <div class="tab-content active" id="profile">
+            <div class="settings-card">
+                <h2>Profile Information</h2>
+                <div class="success-message" id="profileSuccess">Profile updated successfully!</div>
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="email" placeholder="your@email.com" required>
+                        <p class="help-text">This is your login email and where we'll send notifications</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+44 20 1234 5678">
+                    </div>
+                    <div class="form-group">
+                        <label>Bio</label>
+                        <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Location</label>
+                        <input type="text" id="location" placeholder="City, Country">
+                    </div>
+                    <button type="submit" class="save-btn">💾 Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Security Tab -->
+        <div class="tab-content" id="security">
+            <div class="settings-card">
+                <h2>Change Password</h2>
+                <div class="success-message" id="passwordSuccess">Password changed successfully!</div>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" id="currentPassword" placeholder="Enter current password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" id="newPassword" placeholder="Enter new password" required>
+                        <p class="help-text">Must be at least 8 characters with letters and numbers</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm new password" required>
+                    </div>
+                    <button type="submit" class="save-btn">🔒 Change Password</button>
+                </form>
+            </div>
+
+            <div class="settings-card">
+                <h2>Two-Factor Authentication</h2>
+                <p style="color: #666; margin-bottom: 20px;">Add an extra layer of security to your account</p>
+                <button class="save-btn">🛡️ Enable 2FA</button>
+            </div>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div class="tab-content" id="notifications">
+            <div class="settings-card">
+                <h2>Email Notifications</h2>
+                <div class="success-message" id="notificationSuccess">Notification preferences saved!</div>
+                <form id="notificationForm">
+                    <div class="notification-item">
+                        <div>
+                            <strong>Event Reminders</strong>
+                            <p style="color: #666; font-size: 14px; margin: 5px 0 0 0;">Get notified about upcoming events you're attending</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="eventReminders" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-item">
+                        <div>
+                            <strong>New Events</strong>
+                            <p style="color: #666; font-size: 14px; margin: 5px 0 0 0;">Discover new events matching your interests</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="newEvents" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-item">
+                        <div>
+                            <strong>Promotional Emails</strong>
+                            <p style="color: #666; font-size: 14px; margin: 5px 0 0 0;">Receive special offers and discounts</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="promotional">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="notification-item">
+                        <div>
+                            <strong>Newsletter</strong>
+                            <p style="color: #666; font-size: 14px; margin: 5px 0 0 0;">Weekly digest of events and news</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="newsletter" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="save-btn" style="margin-top: 20px;">💾 Save Preferences</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Preferences Tab -->
+        <div class="tab-content" id="preferences">
+            <div class="settings-card">
+                <h2>Event Preferences</h2>
+                <div class="success-message" id="preferencesSuccess">Preferences saved successfully!</div>
+                <form id="preferencesForm">
+                    <div class="form-group">
+                        <label>Preferred Event Categories</label>
+                        <select id="categories" multiple size="6">
+                            <option value="music">🎵 Music</option>
+                            <option value="conference">💼 Conference</option>
+                            <option value="sports">⚽ Sports</option>
+                            <option value="arts">🎨 Arts & Culture</option>
+                            <option value="food">🍽️ Food & Drink</option>
+                            <option value="tech">💻 Technology</option>
+                        </select>
+                        <p class="help-text">Hold Ctrl (Cmd on Mac) to select multiple categories</p>
+                    </div>
+                    <div class="form-group">
+                        <label>Language</label>
+                        <select id="language">
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Currency</label>
+                        <select id="currency">
+                            <option value="GBP">£ GBP - British Pound</option>
+                            <option value="USD">$ USD - US Dollar</option>
+                            <option value="EUR">€ EUR - Euro</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="save-btn">💾 Save Preferences</button>
+                </form>
+            </div>
+
+            <div class="settings-card">
+                <div class="danger-zone">
+                    <h3>⚠️ Danger Zone</h3>
+                    <p style="color: #666; margin-bottom: 15px;">Once you delete your account, there is no going back. Please be certain.</p>
+                    <button class="danger-btn" id="deleteAccount">Delete My Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 Big Eventz. All rights reserved.</p>
+        <p>
+            <a href="terms.html">Terms & Conditions</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="contact.html">Contact Us</a>
+        </p>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        if (!user.email) {
+            alert('Please log in to access account settings');
+            window.location.href = 'login.html?redirect=settings.html';
+        }
+
+        // Load user data into form
+        document.getElementById('email').value = user.email || '';
+        document.getElementById('fullName').value = user.name || '';
+
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                btn.classList.add('active');
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Profile form submission
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const updatedUser = {
+                email: document.getElementById('email').value,
+                name: document.getElementById('fullName').value,
+                phone: document.getElementById('phone').value,
+                bio: document.getElementById('bio').value,
+                location: document.getElementById('location').value
+            };
+            localStorage.setItem('user', JSON.stringify(updatedUser));
+            document.getElementById('profileSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('profileSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Password form submission
+        document.getElementById('passwordForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            if (newPassword !== confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+            
+            if (newPassword.length < 8) {
+                alert('Password must be at least 8 characters long!');
+                return;
+            }
+            
+            document.getElementById('passwordSuccess').style.display = 'block';
+            document.getElementById('passwordForm').reset();
+            setTimeout(() => {
+                document.getElementById('passwordSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Notification form submission
+        document.getElementById('notificationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('notificationSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('notificationSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Preferences form submission
+        document.getElementById('preferencesForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('preferencesSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('preferencesSuccess').style.display = 'none';
+            }, 3000);
+        });
+
+        // Delete account
+        document.getElementById('deleteAccount').addEventListener('click', () => {
+            if (confirm('Are you absolutely sure you want to delete your account? This action cannot be undone.')) {
+                if (confirm('This will permanently delete all your data. Continue?')) {
+                    localStorage.clear();
+                    alert('Your account has been deleted.');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
