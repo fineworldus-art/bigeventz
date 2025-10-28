@@ -415,6 +415,9 @@
             }
         }
 
+        // Initialize shopping cart
+        const cart = new ShoppingCart();
+        
         // Add to cart function
         function addToCart(button) {
             const productCard = button.closest('.product-card');
@@ -429,7 +432,7 @@
             };
             
             const quantity = parseInt(quantityInput.value);
-            window.shoppingCart.addItem(product, quantity);
+            cart.addItem(product, quantity);
             
             // Reset quantity to 1
             quantityInput.value = 1;
