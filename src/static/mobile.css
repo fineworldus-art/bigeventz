@@ -1,0 +1,604 @@
+/**
+ * Mobile Optimization Styles for Big Eventz
+ * 
+ * This file contains mobile-specific improvements that enhance
+ * the user experience on smaller devices without affecting desktop views.
+ * 
+ * Breakpoints:
+ * - Mobile: 0-480px
+ * - Tablet: 481-768px
+ * - Desktop: 769px+
+ */
+
+/* ========================================================================
+   MOBILE NAVIGATION (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    /* Hamburger menu functionality */
+    header {
+        padding: 15px 20px;
+    }
+    
+    .hamburger {
+        display: block;
+        width: 30px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+        z-index: 1001;
+    }
+    
+    .hamburger::before,
+    .hamburger::after,
+    .hamburger span {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background: var(--white);
+        transition: all 0.3s ease;
+    }
+    
+    .hamburger::before {
+        top: 0;
+    }
+    
+    .hamburger span {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .hamburger::after {
+        bottom: 0;
+    }
+    
+    /* Mobile navigation */
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+        padding: 80px 20px 20px;
+        transition: right 0.3s ease;
+        z-index: 1000;
+        overflow-y: auto;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    nav ul li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 15px 10px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+        background: rgba(255, 111, 97, 0.15);
+        padding-left: 20px;
+    }
+    
+    /* Language selector */
+    #languageSelector {
+        margin: 20px 10px;
+        width: calc(100% - 20px);
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    /* Mobile overlay */
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 999;
+    }
+    
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* ========================================================================
+   MOBILE HERO SECTIONS (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .hero,
+    .merch-hero,
+    .cart-hero,
+    .about-hero,
+    .contact-hero {
+        height: 50vh;
+        min-height: 300px;
+        padding: 40px 20px;
+    }
+    
+    .hero h1,
+    .merch-hero h1,
+    .cart-hero h1 {
+        font-size: 32px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+    
+    .hero p,
+    .merch-hero p,
+    .cart-hero p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .cta-button {
+        padding: 14px 28px;
+        font-size: 16px;
+    }
+}
+
+/* ========================================================================
+   MOBILE PRODUCT CARDS (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .merch-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .product-card {
+        max-width: 100%;
+    }
+    
+    .product-image {
+        height: 250px;
+    }
+    
+    .product-category {
+        font-size: 11px;
+        padding: 4px 10px;
+    }
+    
+    .product-card h3 {
+        font-size: 20px;
+    }
+    
+    .product-card p {
+        font-size: 14px;
+    }
+    
+    .product-price {
+        font-size: 26px;
+    }
+    
+    .quantity-selector {
+        gap: 10px;
+        margin-bottom: 12px;
+    }
+    
+    .quantity-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 22px;
+    }
+    
+    .quantity-input {
+        width: 70px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .add-to-cart-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+}
+
+/* ========================================================================
+   MOBILE CART PAGE (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .cart-container {
+        padding: 0 15px;
+        margin: 40px auto;
+    }
+    
+    .cart-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .cart-items,
+    .cart-summary {
+        padding: 20px;
+    }
+    
+    .cart-item {
+        grid-template-columns: 100px 1fr;
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    .cart-item-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .cart-item-details h3 {
+        font-size: 18px;
+    }
+    
+    .cart-item-price {
+        font-size: 20px;
+    }
+    
+    .cart-item-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+    
+    .item-total {
+        font-size: 20px;
+    }
+    
+    .cart-summary {
+        position: static;
+    }
+}
+
+/* ========================================================================
+   MOBILE FORMS (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .contact-form,
+    .login-form,
+    .signup-form {
+        padding: 20px;
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 14px;
+        min-height: 48px; /* Better touch targets */
+    }
+    
+    .form-group textarea {
+        min-height: 120px;
+    }
+    
+    button[type="submit"],
+    .submit-btn {
+        width: 100%;
+        padding: 16px;
+        font-size: 18px;
+        min-height: 52px;
+    }
+}
+
+/* ========================================================================
+   MOBILE EVENT CARDS (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+    
+    .event-card {
+        max-width: 100%;
+    }
+    
+    .event-image {
+        height: 200px;
+    }
+    
+    .event-card h3 {
+        font-size: 20px;
+    }
+    
+    .event-date,
+    .event-location {
+        font-size: 14px;
+    }
+    
+    .register-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+}
+
+/* ========================================================================
+   MOBILE FILTER BUTTONS (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .filter-section {
+        padding: 20px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .filter-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: nowrap;
+        min-width: min-content;
+    }
+    
+    .filter-btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+}
+
+/* ========================================================================
+   MOBILE DASHBOARD (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 20px;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .dashboard-card {
+        padding: 20px;
+    }
+    
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-btn {
+        padding: 16px;
+        font-size: 16px;
+    }
+}
+
+/* ========================================================================
+   MOBILE FOOTER (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 20px 20px;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-section {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* ========================================================================
+   MOBILE COUNTDOWN TIMER (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .countdown-section {
+        padding: 40px 20px;
+    }
+    
+    .countdown-section h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    
+    .countdown {
+        gap: 15px;
+    }
+    
+    .countdown-item {
+        min-width: 70px;
+    }
+    
+    .countdown-number {
+        font-size: 32px;
+    }
+    
+    .countdown-label {
+        font-size: 12px;
+    }
+}
+
+/* ========================================================================
+   MOBILE CART ICON (0-768px)
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    .cart-icon {
+        top: 70px;
+        right: 15px;
+        padding: 12px;
+        font-size: 20px;
+    }
+    
+    .cart-count {
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+    }
+}
+
+/* ========================================================================
+   MOBILE TYPOGRAPHY (0-480px)
+   ======================================================================== */
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    h4 {
+        font-size: 18px;
+    }
+    
+    .section {
+        padding: 40px 15px;
+    }
+}
+
+/* ========================================================================
+   MOBILE TOUCH IMPROVEMENTS
+   ======================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets for mobile */
+    button,
+    a,
+    input[type="submit"],
+    .cta-button,
+    .filter-btn,
+    .add-to-cart-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    *:hover {
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    /* Better tap feedback */
+    button:active,
+    a:active,
+    .cta-button:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* ========================================================================
+   MOBILE LANDSCAPE ORIENTATION
+   ======================================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero,
+    .merch-hero,
+    .cart-hero {
+        height: 80vh;
+        min-height: 400px;
+    }
+    
+    nav {
+        padding: 60px 20px 20px;
+    }
+}
+
+/* ========================================================================
+   TABLET SPECIFIC (481px - 768px)
+   ======================================================================== */
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .merch-container,
+    .events-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================================================
+   MOBILE ACCESSIBILITY IMPROVEMENTS
+   ======================================================================== */
+
+@media (max-width: 768px) {
+    /* Skip link for screen readers */
+    .skip-link:focus {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10000;
+        padding: 10px 15px;
+        background: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    
+    /* Better focus indicators */
+    *:focus-visible {
+        outline: 3px solid var(--primary-color);
+        outline-offset: 2px;
+    }
+    
+    /* Prevent text size adjustment on orientation change */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
