@@ -7,15 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .merch-hero {
-            background: linear-gradient(135deg, #0A0A0A 0%, #171717 100%), url('https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=1920&q=80');
-            background-blend-mode: overlay;
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3), 0 0 60px rgba(234, 179, 8, 0.2);
-            border-bottom: 2px solid #F59E0B;
+            box-shadow: 0 4px 20px rgba(255, 111, 97, 0.3);
         }
         .merch-hero h1 {
             font-size: 48px;
@@ -25,7 +21,7 @@
             max-width: 1400px;
             margin: 60px auto;
             padding: 0 20px;
-            background: #0A0A0A;
+            background: #f5f5f5;
         }
         .filter-section {
             display: flex;
@@ -35,9 +31,9 @@
         }
         .filter-btn {
             padding: 12px 28px;
-            border: 2px solid #F59E0B;
-            background: #171717;
-            color: #F59E0B;
+            border: 2px solid #ff6f61;
+            background: white;
+            color: #ff6f61;
             border-radius: 30px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -46,11 +42,11 @@
         }
         .filter-btn:hover,
         .filter-btn.active {
-            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
-            color: #0A0A0A;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.5), 0 0 25px rgba(234, 179, 8, 0.4);
+            box-shadow: 0 4px 12px rgba(255, 111, 97, 0.4);
         }
         .products-grid {
             display: grid;
@@ -58,17 +54,17 @@
             gap: 30px;
         }
         .product-card {
-            background: #171717;
+            background: white;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            border: 1px solid #2A2A2A;
+            border: 1px solid #e0e0e0;
         }
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 40px rgba(245, 158, 11, 0.3);
-            border-color: #F59E0B;
+            box-shadow: 0 8px 30px rgba(255, 111, 97, 0.3);
+            border-color: #ff6f61;
         }
         .product-image {
             width: 100%;
@@ -79,7 +75,7 @@
             padding: 20px;
         }
         .product-category {
-            color: #EAB308;
+            color: #ff6f61;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
@@ -90,7 +86,7 @@
             font-size: 22px;
             font-weight: 700;
             margin: 10px 0;
-            color: #FAFAFA;
+            color: #333333;
             font-family: 'Poppins', sans-serif;
         }
         .product-description {
@@ -102,16 +98,15 @@
         .product-price {
             font-size: 28px;
             font-weight: bold;
-            color: #F59E0B;
+            color: #ffca28;
             margin-bottom: 15px;
             font-family: 'Poppins', sans-serif;
-            text-shadow: 0 0 20px rgba(245, 158, 11, 0.6);
         }
         .add-to-cart-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
-            color: #0A0A0A;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
             border: none;
             border-radius: 50px;
             font-weight: 700;
@@ -120,23 +115,23 @@
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 111, 97, 0.3);
         }
         .add-to-cart-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6), 0 0 30px rgba(234, 179, 8, 0.5);
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.5);
         }
         .cart-icon {
             position: fixed;
             top: 100px;
             right: 30px;
-            background: linear-gradient(135deg, #F59E0B 0%, #EAB308 100%);
-            color: #0A0A0A;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
             padding: 15px;
             border-radius: 50%;
             font-size: 24px;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(234, 179, 8, 0.4);
+            box-shadow: 0 6px 20px rgba(255, 111, 97, 0.4);
             z-index: 100;
         }
         .cart-count {
