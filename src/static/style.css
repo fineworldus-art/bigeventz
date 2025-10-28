@@ -132,29 +132,43 @@ body {
   color: var(--text-color);
 }
 
-/* Header and navigation */
+/* Header and navigation - Modern, Fancy, Professional */
 header {
-  background-color: var(--dark-bg);
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
   color: var(--white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem 3rem;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 1px rgba(255, 111, 97, 0.5);
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, #ff6f61 0%, #ffca28 50%, #ff6f61 100%) 1;
+  backdrop-filter: blur(10px);
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 header .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  gap: 0.75rem;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 10px rgba(255, 111, 97, 0.3);
+  transition: all 0.3s ease;
+}
+
+header .logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
 }
 
 /* Text-only logo styling
@@ -192,49 +206,120 @@ header .logo {
 nav ul {
   list-style: none;
   display: flex;
-  gap: 0.5rem;
+  gap: 0.25rem;
   flex-wrap: wrap;
   align-items: center;
 }
 
 nav a {
-  color: var(--white);
+  color: #f0f0f0;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.9rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 111, 97, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+nav a:hover::before {
+  left: 100%;
 }
 
 nav a:hover {
-  color: var(--primary-color);
-  background: rgba(255, 111, 97, 0.1);
+  color: var(--white);
+  background: linear-gradient(135deg, rgba(255, 111, 97, 0.2) 0%, rgba(255, 202, 40, 0.2) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 111, 97, 0.3);
 }
 
-/* Auth links styling (Login/Sign Up) */
+/* Auth links styling (Login/Sign Up) - Modern Fancy Design */
 nav .auth-item a {
-  background: rgba(255, 111, 97, 0.1);
-  border: 1px solid var(--primary-color);
+  background: linear-gradient(135deg, rgba(255, 111, 97, 0.15) 0%, rgba(255, 202, 40, 0.15) 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%) 1;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+nav .auth-item a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+nav .auth-item a:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 nav .auth-item a:hover {
-  background: var(--primary-color);
   color: var(--white);
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 111, 97, 0.5);
 }
 
-/* Dashboard and logout links */
+/* Dashboard and logout links - Modern Fancy Design */
 nav .dashboard-item a,
 nav .logout-item a {
-  background: rgba(255, 202, 40, 0.1);
-  border: 1px solid var(--secondary-color);
+  background: linear-gradient(135deg, rgba(255, 202, 40, 0.15) 0%, rgba(255, 111, 97, 0.15) 100%);
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, #ffca28 0%, #ff6f61 100%) 1;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+nav .dashboard-item a::after,
+nav .logout-item a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffca28 0%, #ff6f61 100%);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+  z-index: -1;
+}
+
+nav .dashboard-item a:hover::after,
+nav .logout-item a:hover::after {
+  width: 300px;
+  height: 300px;
 }
 
 nav .dashboard-item a:hover,
 nav .logout-item a:hover {
-  background: var(--secondary-color);
   color: var(--dark-bg);
+  border-color: transparent;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 202, 40, 0.5);
 }
 
 /* Hero section */
