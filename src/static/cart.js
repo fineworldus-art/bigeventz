@@ -13,6 +13,12 @@ class ShoppingCart {
     saveCart() {
         localStorage.setItem('shoppingCart', JSON.stringify(this.items));
         this.updateCartCount();
+        
+        // Trigger header cart count update
+        if (typeof window.updateHeaderCartCount === 'function') {
+            window.updateHeaderCartCount();
+        }
+        window.dispatchEvent(new Event('cartUpdated'));
     }
 
     addItem(product, quantity = 1) {
