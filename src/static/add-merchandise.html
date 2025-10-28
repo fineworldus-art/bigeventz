@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Merchandise | Big Eventz</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .add-merchandise-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .add-merchandise-container h1 {
+            color: #ff6f61;
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .add-merchandise-container p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+        }
+
+        .form-section h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ff6f61;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ff6f61;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            color: #999;
+            font-size: 0.875rem;
+        }
+
+        .image-upload-area {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 40px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .image-upload-area:hover {
+            border-color: #ff6f61;
+            background: #fff8f6;
+        }
+
+        .image-upload-area.dragover {
+            border-color: #ff6f61;
+            background: #fff8f6;
+        }
+
+        .image-upload-area svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 10px;
+            color: #ff6f61;
+        }
+
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .image-preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+        }
+
+        .image-preview-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .image-preview-item .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(255,111,97,0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            flex: 1;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,111,97,0.4);
+        }
+
+        .btn-cancel {
+            background: #f5f5f5;
+            color: #666;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .success-message {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .required {
+            color: #ff6f61;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Big Eventz</a>
+            <button class="nav-toggle" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="events.html" data-i18n="events">Events</a></li>
+                <li><a href="tickets_modern.html" data-i18n="tickets">Tickets</a></li>
+                <li><a href="promoters_modern.html" data-i18n="promoters">Promoters</a></li>
+                <li><a href="create-event.html" data-i18n="createEvent">Create Event</a></li>
+                <li><a href="merchandise.html" data-i18n="merchandise">Merchandise</a></li>
+                <li><a href="map.html" data-i18n="map">Map</a></li>
+                <li><a href="about.html" data-i18n="about">About</a></li>
+                <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="login.html" class="auth-link" id="loginLink" data-i18n="login">Login</a>
+                <a href="signup.html" class="auth-link signup" id="signupLink" data-i18n="signUp">Sign Up</a>
+                <a href="dashboard.html" class="auth-link" id="dashboardLink" style="display:none;" data-i18n="dashboard">Dashboard</a>
+                <a href="#" class="auth-link" id="logoutLink" style="display:none;" data-i18n="logout">Logout</a>
+            </div>
+            <select id="languageSelector" class="language-selector">
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+        </div>
+    </nav>
+
+    <main>
+        <div class="add-merchandise-container">
+            <h1>Add New Merchandise</h1>
+            <p>Fill in the details below to add a new product to the merchandise store</p>
+
+            <div class="success-message" id="successMessage">
+                ✓ Merchandise added successfully! Redirecting to merchandise page...
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                ✗ Please fill in all required fields.
+            </div>
+
+            <form id="addMerchandiseForm">
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="productName">Product Name <span class="required">*</span></label>
+                        <input type="text" id="productName" name="productName" required placeholder="e.g., Big Eventz T-Shirt">
+                        <small>Enter a clear, descriptive name for your product</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Category <span class="required">*</span></label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="APPAREL">Apparel</option>
+                            <option value="ACCESSORIES">Accessories</option>
+                            <option value="TECH">Tech</option>
+                            <option value="COLLECTIBLES">Collectibles</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description <span class="required">*</span></label>
+                        <textarea id="description" name="description" required placeholder="Describe your product in detail..."></textarea>
+                        <small>Provide a detailed description including materials, features, and benefits</small>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="form-section">
+                    <h3>Pricing</h3>
+                    
+                    <div class="form-group">
+                        <label for="price">Price (£) <span class="required">*</span></label>
+                        <input type="number" id="price" name="price" min="0" step="0.01" required placeholder="29.99">
+                        <small>Enter the price in GBP (£)</small>
+                    </div>
+                </div>
+
+                <!-- Images -->
+                <div class="form-section">
+                    <h3>Product Images</h3>
+                    
+                    <div class="form-group">
+                        <label>Upload Images <span class="required">*</span></label>
+                        <div class="image-upload-area" id="imageUploadArea">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            <p><strong>Click to upload</strong> or drag and drop</p>
+                            <small>PNG, JPG or WEBP (max. 5MB each)</small>
+                        </div>
+                        <input type="file" id="imageInput" name="images" accept="image/*" multiple style="display: none;">
+                        <div class="image-preview" id="imagePreview"></div>
+                        <small>Upload at least one product image. You can upload multiple images.</small>
+                    </div>
+                </div>
+
+                <!-- Inventory -->
+                <div class="form-section">
+                    <h3>Inventory</h3>
+                    
+                    <div class="form-group">
+                        <label for="stock">Stock Quantity <span class="required">*</span></label>
+                        <input type="number" id="stock" name="stock" min="0" required placeholder="100">
+                        <small>How many units are available?</small>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="window.location.href='merchandise.html'">Cancel</button>
+                    <button type="submit" class="btn-submit">Add Merchandise</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Big Eventz</h3>
+                <p>Your global stage for unforgettable events. Discover, attend, and create amazing experiences worldwide.</p>
+                <div class="footer-social">
+                    <a href="https://twitter.com" target="_blank" rel="noopener" class="social-icon" aria-label="Twitter">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path></svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Browse Events</a></li>
+                    <li><a href="tickets_modern.html">Buy Tickets</a></li>
+                    <li><a href="create-event.html">Create Event</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="promoters_modern.html">For Promoters</a></li>
+                    <li><a href="merchandise.html">Merchandise</a></li>
+                    <li><a href="map.html">Event Map</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                    <li><a href="settings.html">Account Settings</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Big Eventz. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Check if user is logged in
+        const user = localStorage.getItem('user');
+        if (!user) {
+            window.location.href = 'login.html?redirect=add-merchandise.html';
+        }
+
+        // Image upload handling
+        const imageUploadArea = document.getElementById('imageUploadArea');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        let selectedImages = [];
+
+        // Click to upload
+        imageUploadArea.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        // Drag and drop
+        imageUploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            imageUploadArea.classList.add('dragover');
+        });
+
+        imageUploadArea.addEventListener('dragleave', () => {
+            imageUploadArea.classList.remove('dragover');
+        });
+
+        imageUploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            imageUploadArea.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(files) {
+            Array.from(files).forEach(file => {
+                if (file.type.startsWith('image/') && file.size <= 5 * 1024 * 1024) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        selectedImages.push({
+                            file: file,
+                            dataUrl: e.target.result
+                        });
+                        displayImages();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        function displayImages() {
+            imagePreview.innerHTML = '';
+            selectedImages.forEach((img, index) => {
+                const div = document.createElement('div');
+                div.className = 'image-preview-item';
+                div.innerHTML = `
+                    <img src="${img.dataUrl}" alt="Preview ${index + 1}">
+                    <button type="button" class="remove-image" onclick="removeImage(${index})">×</button>
+                `;
+                imagePreview.appendChild(div);
+            });
+        }
+
+        function removeImage(index) {
+            selectedImages.splice(index, 1);
+            displayImages();
+        }
+
+        // Form submission
+        document.getElementById('addMerchandiseForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+
+            // Validate
+            if (selectedImages.length === 0) {
+                errorMessage.textContent = '✗ Please upload at least one product image.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Get form data
+            const formData = {
+                productName: document.getElementById('productName').value,
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value,
+                price: parseFloat(document.getElementById('price').value),
+                stock: parseInt(document.getElementById('stock').value),
+                images: selectedImages.map(img => img.dataUrl),
+                createdAt: new Date().toISOString(),
+                createdBy: JSON.parse(user).email
+            };
+
+            // Save to localStorage (in production, this would be an API call)
+            const existingMerchandise = JSON.parse(localStorage.getItem('merchandise') || '[]');
+            formData.id = Date.now().toString();
+            existingMerchandise.push(formData);
+            localStorage.setItem('merchandise', JSON.stringify(existingMerchandise));
+
+            // Show success message
+            successMessage.style.display = 'block';
+            
+            // Redirect after 2 seconds
+            setTimeout(() => {
+                window.location.href = 'merchandise.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
+
