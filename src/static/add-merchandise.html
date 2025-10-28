@@ -6,6 +6,22 @@
     <title>Add Merchandise | Big Eventz</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Make navigation more visible */
+        .navbar {
+            background: #1a1a1a !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+        }
+        
+        .navbar .logo {
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+        }
+        
+        .nav-menu a {
+            font-size: 1rem !important;
+            font-weight: 500 !important;
+        }
+        
         .add-merchandise-container {
             max-width: 800px;
             margin: 40px auto;
@@ -207,6 +223,83 @@
         .required {
             color: #ff6f61;
         }
+
+        .variants-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .variant-group {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .variant-group input {
+            flex: 1;
+        }
+
+        .variant-group button {
+            padding: 12px 20px;
+            background: #f5f5f5;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .variant-group button:hover {
+            background: #ff6f61;
+            color: white;
+            border-color: #ff6f61;
+        }
+
+        .add-variant-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #ff6f61 0%, #ffca28 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .add-variant-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255,111,97,0.4);
+        }
+
+        .variant-tag {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #fff8f6;
+            border: 2px solid #ff6f61;
+            border-radius: 20px;
+            margin: 5px;
+            color: #ff6f61;
+            font-weight: 600;
+        }
+
+        .variant-tag button {
+            background: none;
+            border: none;
+            color: #ff6f61;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 8px;
+            font-size: 16px;
+        }
+
+        .variants-display {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -295,6 +388,41 @@
                         <label for="price">Price (£) <span class="required">*</span></label>
                         <input type="number" id="price" name="price" min="0" step="0.01" required placeholder="29.99">
                         <small>Enter the price in GBP (£)</small>
+                    </div>
+                </div>
+
+                <!-- Product Variants -->
+                <div class="form-section">
+                    <h3>Product Variants (Optional)</h3>
+                    
+                    <div class="form-group">
+                        <label>Sizes</label>
+                        <div class="variants-display" id="sizesDisplay"></div>
+                        <div class="variant-group" style="margin-top: 10px;">
+                            <input type="text" id="sizeInput" placeholder="e.g., S, M, L, XL" />
+                            <button type="button" onclick="addVariant('size')">Add Size</button>
+                        </div>
+                        <small>Add available sizes for this product (e.g., S, M, L, XL)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Colours</label>
+                        <div class="variants-display" id="coloursDisplay"></div>
+                        <div class="variant-group" style="margin-top: 10px;">
+                            <input type="text" id="colourInput" placeholder="e.g., Black, White, Red" />
+                            <button type="button" onclick="addVariant('colour')">Add Colour</button>
+                        </div>
+                        <small>Add available colours for this product</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Other Options</label>
+                        <div class="variants-display" id="optionsDisplay"></div>
+                        <div class="variant-group" style="margin-top: 10px;">
+                            <input type="text" id="optionInput" placeholder="e.g., Material, Style" />
+                            <button type="button" onclick="addVariant('option')">Add Option</button>
+                        </div>
+                        <small>Add any other product options or variations</small>
                     </div>
                 </div>
 
@@ -411,6 +539,72 @@
             window.location.href = 'login.html?redirect=add-merchandise.html';
         }
 
+        // Product variants handling
+        const variants = {
+            sizes: [],
+            colours: [],
+            options: []
+        };
+
+        function addVariant(type) {
+            const inputId = type === 'size' ? 'sizeInput' : type === 'colour' ? 'colourInput' : 'optionInput';
+            const displayId = type === 'size' ? 'sizesDisplay' : type === 'colour' ? 'coloursDisplay' : 'optionsDisplay';
+            const input = document.getElementById(inputId);
+            const value = input.value.trim();
+
+            if (value) {
+                const variantType = type === 'size' ? 'sizes' : type === 'colour' ? 'colours' : 'options';
+                variants[variantType].push(value);
+                displayVariants(type);
+                input.value = '';
+            }
+        }
+
+        function displayVariants(type) {
+            const displayId = type === 'size' ? 'sizesDisplay' : type === 'colour' ? 'coloursDisplay' : 'optionsDisplay';
+            const variantType = type === 'size' ? 'sizes' : type === 'colour' ? 'colours' : 'options';
+            const display = document.getElementById(displayId);
+            
+            display.innerHTML = '';
+            variants[variantType].forEach((variant, index) => {
+                const tag = document.createElement('div');
+                tag.className = 'variant-tag';
+                tag.innerHTML = `
+                    ${variant}
+                    <button type="button" onclick="removeVariant('${type}', ${index})">×</button>
+                `;
+                display.appendChild(tag);
+            });
+        }
+
+        function removeVariant(type, index) {
+            const variantType = type === 'size' ? 'sizes' : type === 'colour' ? 'colours' : 'options';
+            variants[variantType].splice(index, 1);
+            displayVariants(type);
+        }
+
+        // Allow Enter key to add variants
+        document.getElementById('sizeInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addVariant('size');
+            }
+        });
+
+        document.getElementById('colourInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addVariant('colour');
+            }
+        });
+
+        document.getElementById('optionInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addVariant('option');
+            }
+        });
+
         // Image upload handling
         const imageUploadArea = document.getElementById('imageUploadArea');
         const imageInput = document.getElementById('imageInput');
@@ -501,6 +695,11 @@
                 price: parseFloat(document.getElementById('price').value),
                 stock: parseInt(document.getElementById('stock').value),
                 images: selectedImages.map(img => img.dataUrl),
+                variants: {
+                    sizes: variants.sizes,
+                    colours: variants.colours,
+                    options: variants.options
+                },
                 createdAt: new Date().toISOString(),
                 createdBy: JSON.parse(user).email
             };
