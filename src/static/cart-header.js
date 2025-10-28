@@ -10,7 +10,7 @@
     
     // Update header cart count
     function updateHeaderCartCount() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
         const badge = document.getElementById('headerCartCount');
         
@@ -29,7 +29,7 @@
     
     // Listen for storage changes (from other tabs/windows)
     window.addEventListener('storage', function(e) {
-        if (e.key === 'cart') {
+        if (e.key === 'shoppingCart') {
             updateHeaderCartCount();
         }
     });
