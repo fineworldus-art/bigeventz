@@ -405,7 +405,7 @@
     <script src="script.js"></script>
     <script>
         // Quantity selector functions
-        function updateQuantity(button, change) {
+        window.updateQuantity = function(button, change) {
             const quantityInput = button.parentElement.querySelector('.quantity-input');
             let currentValue = parseInt(quantityInput.value);
             let newValue = currentValue + change;
@@ -420,7 +420,7 @@
         const cart = window.shoppingCart;
         
         // Add to cart function
-        function addToCart(button) {
+        window.addToCart = function(button) {
             const productCard = button.closest('.product-card');
             const quantityInput = productCard.querySelector('.quantity-input');
             
