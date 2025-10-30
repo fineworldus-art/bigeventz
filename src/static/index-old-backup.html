@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Big Eventz is a global platform for promoting events and selling tickets. Discover, host and buy tickets for music festivals, conferences, art exhibitions and more." />
+    <meta name="keywords" content="event tickets, global events, event promotion, festival, conference, music, art, concert, promoter platform" />
+    <link rel="canonical" href="https://www.bigeventz.com/" />
+    <title>Big Eventz | Home</title>
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Enhanced Hero Section -->
+    <link rel="stylesheet" href="hero-enhanced.css" />
+  </head>
+  <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#mainContent" class="skip-link" data-i18n="skipToMain">Skip to main content</a>
+    <header>
+      <div class="logo">
+        <!-- Clickable logo redirects to the home page -->
+        <a href="index.html" class="logo-text">Big Eventz</a>
+      </div>
+      <!-- Mobile menu toggle button -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+      <!-- Navigation with additional login/sign‑up links -->
+      <nav aria-label="Primary navigation" id="mainNav">
+        <ul>
+          <li><a href="index.html" data-i18n="home">Home</a></li>
+          <li><a href="events.html" data-i18n="events">Events</a></li>
+          <li><a href="tickets_modern.html" data-i18n="tickets">Tickets</a></li>
+          <li><a href="promoters_modern.html" data-i18n="promoters">Promoters</a></li>
+          <li class="create-event-item"><a href="create-event.html" data-i18n="createEvent">Create Event</a></li>
+          <li><a href="merchandise.html" data-i18n="merchandise">Merchandise</a></li>
+          <li><a href="map.html" data-i18n="map">Map</a></li>
+          <li><a href="about.html" data-i18n="about">About</a></li>
+          <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+          <li class="auth-item"><a href="login.html" class="login-link" data-i18n="login">Login</a></li>
+          <li class="auth-item"><a href="signup.html" class="signup-link" data-i18n="signup">Sign Up</a></li>
+          <li class="dashboard-item" style="display:none"><a href="dashboard.html" data-i18n="dashboard">Dashboard</a></li>
+          <li class="logout-item" style="display:none"><a href="#" id="logoutLink" data-i18n="logout">Logout</a></li>
+        </ul>
+      </nav>
+        <a href="cart.html" class="header-cart-icon" aria-label="Shopping Cart">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 18C5.9 18 5.01 18.9 5.01 20C5.01 21.1 5.9 22 7 22C8.1 22 9 21.1 9 20C9 18.9 8.1 18 7 18ZM1 2V4H3L6.6 11.59L5.25 14.04C5.09 14.32 5 14.65 5 15C5 16.1 5.9 17 7 17H19V15H7.42C7.28 15 7.17 14.89 7.17 14.75L7.2 14.63L8.1 13H15.55C16.3 13 16.96 12.59 17.3 11.97L20.88 5.48C20.96 5.34 21 5.17 21 5C21 4.45 20.55 4 20 4H5.21L4.27 2H1ZM17 18C15.9 18 15.01 18.9 15.01 20C15.01 21.1 15.9 22 17 22C18.1 22 19 21.1 19 20C19 18.9 18.1 18 17 18Z" fill="currentColor"/>
+            </svg>
+            <span class="cart-count-badge" id="headerCartCount">0</span>
+        </a>
+      <!-- Language switcher -->
+      
+    </header>
+
+    <!-- Enhanced Multimedia Hero Section -->
+    <section class="hero" id="mainContent">
+      <!-- Animated Background Slideshow -->
+      <div class="hero-slideshow">
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+        <div class="hero-slide"></div>
+      </div>
+      
+      <!-- Particle Effects Overlay -->
+      <div class="hero-particles"></div>
+      
+      <!-- Hero Content -->
+      <div class="content">
+        <h1 data-i18n="heroTitle">Unite the World Through Unforgettable Events</h1>
+        <p data-i18n="heroSubtitle">
+          Big&nbsp;Eventz is your global stage for discovering, promoting and
+          attending concerts, conferences, festivals and more across every
+          continent. We centralise event details, making it simple for
+          attendees and organisers alike.
+        </p>
+        <a href="events.html"><button class="cta-button" id="heroCta" data-i18n="browseEvents">Browse Events</button></a>
+      </div>
+      
+      <!-- Scroll Indicator -->
+      <div class="hero-scroll-indicator"></div>
+    </section>
+
+    <!-- Countdown to the next big event -->
+    <section class="countdown-section">
+      <h2 data-i18n="nextBigEvent">Next Big Event Starts In:</h2>
+      <!--
+        The data-date attribute stores the ISO date of the next event. The
+        JavaScript in script.js reads this date and updates the timer
+        every second. Providing a real-time countdown builds excitement and
+        anticipation, a tactic used by successful event websites【891310995374003†L401-L403】.
+      -->
+      <p class="countdown-timer" id="countdownTimer" data-date="2026-07-22T00:00:00Z">Loading...</p>
+    </section>
+
+    <!-- Preview of upcoming events -->
+    <section class="section">
+      <h2 data-i18n="upcomingEvents">Upcoming Events</h2>
+      <div class="card-container">
+        <!-- Event 1 -->
+        <div class="card" data-category="music festival">
+          <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=800&q=80" alt="Summer Music Festival" loading="lazy" />
+          <div class="card-content">
+            <h3 data-i18n="summerMusicFestival">Summer Music Festival</h3>
+            <p class="date">22–24 July 2026</p>
+            <p class="location">Hyde Park, London</p>
+            <p>
+              Celebrate the best of live music with top artists and bands, food
+              stalls, and fun activities. Perfect for families and music
+              enthusiasts.
+            </p>
+            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
+          </div>
+        </div>
+        <!-- Event 2 -->
+        <div class="card" data-category="conference">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80" alt="Tech Innovators Conference" loading="lazy" />
+          <div class="card-content">
+            <h3 data-i18n="techInnovatorsConference">Tech Innovators Conference</h3>
+            <p class="date">15–16 September 2026</p>
+            <p class="location">Manchester Central Convention Complex</p>
+            <p>
+              Join industry leaders and pioneers to explore cutting‑edge
+              technologies, visionary talks, and immersive workshops shaping the
+              future of innovation.
+            </p>
+            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
+          </div>
+        </div>
+        <!-- Event 3 -->
+        <div class="card" data-category="art">
+          <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?w=800&q=80" alt="Art & Culture Expo" loading="lazy" />
+          <div class="card-content">
+            <h3 data-i18n="artCultureExpo">Art &amp; Culture Expo</h3>
+            <p class="date">10–12 October 2026</p>
+            <p class="location">Baltic Centre for Contemporary Art, Gateshead</p>
+            <p>
+              Experience an eclectic mix of visual arts, performances, and
+              cultural exhibitions celebrating creativity and diversity in the
+              North East.
+            </p>
+            <a class="register-btn" href="contact.html" data-i18n="getTicketsBtn">Register</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose us section -->
+    <section class="section dark">
+      <h2 data-i18n="whyChoose">Why choose Big Eventz?</h2>
+      <div class="card-container">
+        <div class="card">
+          <div class="card-content">
+            <h3 data-i18n="seamlessPlanning">Seamless Planning</h3>
+            <p data-i18n="seamlessPlanningDesc">
+              From concept to completion, our team handles all aspects of event
+              planning, ensuring a stress‑free experience for you.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3 data-i18n="innovativeExperiences">Innovative Experiences</h3>
+            <p data-i18n="innovativeExperiencesDesc">
+              We leverage the latest technology and trends to craft memorable
+              experiences that resonate with your audience.
+            </p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-content">
+            <h3 data-i18n="communityFocus">Community Focus</h3>
+            <p data-i18n="communityFocusDesc">
+              Our events bring people together, fostering community connections
+              and lasting memories.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call‑to‑action section encouraging ticket purchases -->
+    <section class="cta-section">
+      <h2 data-i18n="dontMissOut">Don't miss out on the next big event!</h2>
+      <p data-i18n="dontMissOutDesc">Secure your place and create lasting memories with friends, family or colleagues.</p>
+      <a href="tickets_modern.html"><button class="cta-button" data-i18n="getYourTickets">Get Your Tickets</button></a>
+    </section>
+
+    <!-- Testimonials section for social proof -->
+    <section class="testimonials" id="testimonials">
+      <h2 data-i18n="whatPeopleSay">What People Are Saying</h2>
+      <div class="testimonial-cards">
+        <div class="testimonial-card">
+          <p class="quote" data-i18n="testimonial1">“Big&nbsp;Eventz made planning my international music tour effortless. The platform's reach and simplicity are unmatched.”</p>
+          <p class="author" data-i18n="testimonial1Author">— Samira K., Event Promoter</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote" data-i18n="testimonial2">“From finding tickets to receiving updates, the experience was seamless. I’m already looking forward to my next event!”</p>
+          <p class="author" data-i18n="testimonial2Author">— Daniel R., Attendee</p>
+        </div>
+        <div class="testimonial-card">
+          <p class="quote" data-i18n="testimonial3">“The global network of promoters means there’s always something new and exciting to discover anywhere in the world.”</p>
+          <p class="author" data-i18n="testimonial3Author">— Mei L., Festival Enthusiast</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sponsors and partners section -->
+    <section class="sponsors">
+      <h2 data-i18n="partnersSponsors">Our Partners &amp; Sponsors</h2>
+      <div class="sponsor-logos">
+        <img src="https://logo.clearbit.com/google.com" alt="Google" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4285F4/FFFFFF?text=Google'" />
+        <img src="https://logo.clearbit.com/x.com" alt="X (formerly Twitter)" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/000000/FFFFFF?text=X'" />
+        <img src="https://logo.clearbit.com/instagram.com" alt="Instagram" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/E4405F/FFFFFF?text=Instagram'" />
+        <img src="https://logo.clearbit.com/spotify.com" alt="Spotify" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/1DB954/FFFFFF?text=Spotify'" />
+        <img src="https://logo.clearbit.com/slack.com" alt="Slack" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/4A154B/FFFFFF?text=Slack'" />
+        <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/00A4EF/FFFFFF?text=Microsoft'" />
+        <img src="https://logo.clearbit.com/stripe.com" alt="Stripe" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/635BFF/FFFFFF?text=Stripe'" />
+        <img src="https://logo.clearbit.com/paypal.com" alt="PayPal" loading="lazy" style="height: 60px; opacity: 0.7; transition: opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'" onerror="this.src='https://via.placeholder.com/120x60/003087/FFFFFF?text=PayPal'" />
+      </div>
+    </section>
+
+    <!-- Newsletter subscription section -->
+    <section class="newsletter">
+      <h2 data-i18n="stayUpdated">Stay Updated</h2>
+      <p data-i18n="newsletterDesc">Subscribe to our newsletter and be the first to know about new events and ticket sales.</p>
+      <form id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Your email address" required />
+        <button type="submit" data-i18n="subscribe">Subscribe</button>
+      </form>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Big Eventz</h3>
+                <p>Your global stage for unforgettable events. Discover, attend, and create amazing experiences worldwide.</p>
+                <div class="footer-social">
+                    <a href="https://x.com" target="_blank" rel="noopener" class="social-icon" aria-label="X (formerly Twitter)">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener" class="social-icon" aria-label="Facebook">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="social-icon" aria-label="Instagram">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path><circle cx="4" cy="4" r="2"></circle></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Browse Events</a></li>
+                    <li><a href="tickets_modern.html">Buy Tickets</a></li>
+                    <li><a href="create-event.html">Create Event</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="promoters_modern.html">For Promoters</a></li>
+                    <li><a href="merchandise.html">Merchandise</a></li>
+                    <li><a href="map.html">Event Map</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="contact.html">Support</a></li>
+                    <li><a href="settings.html">Account Settings</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Big Eventz. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Load translations first, then site-wide JavaScript -->
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+      <script src="cart-header.js"></script>
+    <script src="mobile.js"></script>
+</body>
+</html>
+
