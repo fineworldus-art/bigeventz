@@ -258,36 +258,36 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <header>
-  <div class="logo">
-    <a href="index.html">Big Eventz</a>
-  </div>
-  
-  <!-- Mobile menu toggle -->
-  <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-  
-  <!-- Main navigation -->
-  <nav class="main-nav">
-    <button class="menu-close" aria-label="Close menu">×</button>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="tickets_modern.html">Tickets</a></li>
-      <li><a href="promoters_modern.html">For Promoters</a></li>
-      <li><a href="merchandise.html">Merchandise</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="cart.html">Cart</a></li>
-    </ul>
-  </nav>
-  
-  <!-- Overlay for mobile menu -->
-  <div class="menu-overlay"></div>
-</header>
+        <div class="logo">
+            <a href="index.html" class="logo-text">Big Eventz</a>
+        </div>
+        <button class="hamburger" aria-label="Toggle navigation menu"></button>
+        <nav>
+            <ul>
+                <li><a href="index.html" data-translate="home">Home</a></li>
+                <li><a href="events.html" data-translate="events">Events</a></li>
+                <li><a href="tickets_modern.html" data-translate="tickets">Tickets</a></li>
+                <li><a href="promoters.html" data-translate="promoters">Promoters</a></li>
+                <li><a href="create-event.html" data-translate="createEvent">Create New Event</a></li>
+                <li><a href="merchandise.html" data-translate="merchandise">Merchandise</a></li>
+                <li><a href="map.html" data-translate="map">Map</a></li>
+                <li><a href="about.html" data-translate="about">About</a></li>
+                <li><a href="contact.html" data-translate="contact">Contact</a></li>
+                <li class="auth-item"><a href="login.html" data-translate="login">Login</a></li>
+                <li class="auth-item"><a href="signup.html" data-translate="signUp">Sign Up</a></li>
+                <li class="dashboard-item" style="display: none;"><a href="dashboard.html" data-translate="dashboard">Dashboard</a></li>
+                <li class="logout-item" style="display: none;"><a href="#" onclick="logout()" data-translate="logout">Logout</a></li>
+            </ul>
+        </nav>
+        
+        <a href="cart.html" class="header-cart-icon" aria-label="Shopping Cart">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 2L7.17 4H3C1.9 4 1 4.9 1 6V18C1 19.1 1.9 20 3 20H21C22.1 20 23 19.1 23 18V6C23 4.9 22.1 4 21 4H16.83L15 2H9ZM9 4H15L16.83 6H21V18H3V6H7.17L9 4Z" fill="currentColor"/>
+                <path d="M12 8C10.34 8 9 9.34 9 11H11C11 10.45 11.45 10 12 10C12.55 10 13 10.45 13 11C13 12 12 12 12 14H14C14 12.5 15 12 15 11C15 9.34 13.66 8 12 8Z" fill="currentColor"/>
+            </svg>
+            <span class="cart-count-badge" id="headerCartCount">0</span>
+        </a>
+    </header>
 
     <main id="main-content">
         <div class="cart-hero">
@@ -530,7 +530,6 @@
     </script>
     <script src="cart-header.js"></script>
     <script src="mobile.js"></script>
-    <script src="mobile-menu.js"></script>
-  </body>
+</body>
 </html>
 
